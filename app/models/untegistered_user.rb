@@ -1,0 +1,2 @@
+class UntegisteredUser < ApplicationRecord
+end
