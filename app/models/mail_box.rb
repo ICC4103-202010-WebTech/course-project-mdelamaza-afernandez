@@ -1,2 +1,0 @@
-class MailBox < ApplicationRecord
-end
