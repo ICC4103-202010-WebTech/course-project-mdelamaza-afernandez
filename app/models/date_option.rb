@@ -1,0 +1,2 @@
+class DateOption < ApplicationRecord
+end
