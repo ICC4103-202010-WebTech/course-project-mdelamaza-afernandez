@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_232214) do
+ActiveRecord::Schema.define(version: 2020_04_19_035955) do
 
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_04_18_232214) do
   end
 
   create_table "date_options", force: :cascade do |t|
-    t.string "date"
+    t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2020_04_18_232214) do
   create_table "events", force: :cascade do |t|
     t.string "description"
     t.string "location"
-    t.string "creation_date"
-    t.string "voted_date"
+    t.datetime "creation_date"
+    t.datetime "voted_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(version: 2020_04_18_232214) do
 
   create_table "memberships", force: :cascade do |t|
     t.boolean "owner"
+    t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "date"
   end
 
   create_table "multimedia", force: :cascade do |t|
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_04_18_232214) do
 
   create_table "organizations", force: :cascade do |t|
     t.string "description"
-    t.string "creation_date"
+    t.datetime "creation_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

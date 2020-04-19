@@ -3,11 +3,11 @@
 one:
   description: MyString
   location: MyString
-  creation_date: MyString
-  voted_date: MyString
+  creation_date: 2020-04-18 23:58:48
+  voted_date: 2020-04-18 23:58:48
 
 two:
   description: MyString
   location: MyString
-  creation_date: MyString
-  voted_date: MyString
+  creation_date: 2020-04-18 23:58:48
+  voted_date: 2020-04-18 23:58:48
