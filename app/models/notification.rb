@@ -1,4 +1,4 @@
 class Notification < ApplicationRecord
   belongs_to :event
-  has_many :users
+  belongs_to :users
 end

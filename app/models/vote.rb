@@ -1,4 +1,4 @@
 class Vote < ApplicationRecord
-  has_many :date_options
-  has_many :users
+  belongs_to :date_options
+  belongs_to :users
 end

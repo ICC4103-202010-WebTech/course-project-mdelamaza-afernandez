@@ -1,5 +1,5 @@
 class Multimedium < ApplicationRecord
-  has_many :events
-  has_many :organizations
-  has_many :users
+  belongs_to :events
+  belongs_to :organizations
+  belongs_to :users
 end
