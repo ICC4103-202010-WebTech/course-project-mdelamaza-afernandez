@@ -1,2 +1,0 @@
-class ReportComment < ApplicationRecord
-end
