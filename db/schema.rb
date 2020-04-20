@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_051124) do
+ActiveRecord::Schema.define(version: 2020_04_20_215320) do
 
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2020_04_19_051124) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "organization_id"
+    t.string "name"
+    t.boolean "private"
     t.index ["organization_id"], name: "index_events_on_organization_id"
   end
 
@@ -102,8 +104,10 @@ ActiveRecord::Schema.define(version: 2020_04_19_051124) do
     t.integer "event_id"
     t.integer "user_id"
     t.integer "comment_id"
+    t.integer "organization_id"
     t.index ["comment_id"], name: "index_reports_on_comment_id"
     t.index ["event_id"], name: "index_reports_on_event_id"
+    t.index ["organization_id"], name: "index_reports_on_organization_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
@@ -141,6 +145,7 @@ ActiveRecord::Schema.define(version: 2020_04_19_051124) do
   add_foreign_key "notifications", "users"
   add_foreign_key "reports", "comments"
   add_foreign_key "reports", "events"
+  add_foreign_key "reports", "organizations"
   add_foreign_key "reports", "users"
   add_foreign_key "votes", "date_options"
   add_foreign_key "votes", "users"
