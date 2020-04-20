@@ -10,13 +10,13 @@ class User < ApplicationRecord
   validates :user_name, presence: true, uniqueness: true
   has_many :guests
   has_many :events, through: :guests
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
   has_many :events, through: :notifications
-  has_many :reports
+  has_many :reports, dependent: :destroy
   has_many :events, through: :reports
   has_many :comments, through: :reports
   has_many :organizations, through: :reports
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :events, through: :comments
   has_many :memberships
   has_many :organizations, through: :memberships

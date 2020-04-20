@@ -1,5 +1,5 @@
 class Organization < ApplicationRecord
-  has_many :events
+  has_many :events, dependent: :destroy
   has_many :multimedia
   has_many :memberships
   has_many :users,through: :memberships
