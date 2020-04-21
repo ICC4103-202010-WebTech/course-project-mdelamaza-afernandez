@@ -1,8 +1,8 @@
 ###user
-user1 = User.create(email: "cavd@miuandes.cl", user_name:"cavd", password:"123",location:"casa 1",description:"solo hablo español")
-user2 = User.create(email: "aff@miuandes.cl", user_name:"aff", password:"123",location:"casa 2",description:"hello")
-user3 = User.create(email: "medlm@miuandes.cl", user_name:"mdlm", password:"123",location:"casa 3",description:"hi")
-user4 = User.create(email: "gira@miuandes.cl", user_name:"gira", password:"123",location:"casa 4",description:"F")
+user1 = User.create(email: "cavd@miuandes.cl", user_name:"cavd", password:"123",location:"casa 1",description:"solo hablo español",Admin: false)
+user2 = User.create(email: "aff@miuandes.cl", user_name:"aff", password:"123",location:"casa 2",description:"hello",Admin: false)
+user3 = User.create(email: "medlm@miuandes.cl", user_name:"mdlm", password:"123",location:"casa 3",description:"hi",Admin: true)
+user4 = User.create(email: "gira@miuandes.cl", user_name:"gira", password:"123",location:"casa 4",description:"F",Admin: false)
 user1.save!
 user2.save!
 user3.save!
@@ -85,6 +85,36 @@ comment3.event_id= event2.id
 comment1.user_id=user2.id
 comment2.user_id=user3.id
 comment3.user_id=user2.id
-
-
+comment1.save!
+comment2.save!
+comment3.save!
+#date option
+# 1
+date1 = DateOption.create(date:'2019-05-02 01:00:00')
+date2 = DateOption.create(date:'2019-05-03 01:00:00')
+date1.event_id = event1.id
+date2.event_id = event1.id
+date1.save!
+date2.save!
+#2
+date3 = DateOption.create(date:'2019-05-04 01:00:00')
+date4 = DateOption.create(date:'2019-05-05 01:00:00')
+date3.event_id = event1.id
+date4.event_id = event1.id
+date3.save!
+date4.save!
+#3
+date5 = DateOption.create(date:'2019-05-10 01:00:00')
+date6 = DateOption.create(date:'2019-05-11 01:00:00')
+date5.event_id = event2.id
+date6.event_id = event2.id
+date5.save!
+date6.save!
+#4
+date7 = DateOption.create(date:'2019-05-12 01:00:00')
+date8 = DateOption.create(date:'2019-05-13 01:00:00')
+date7.event_id = event2.id
+date8.event_id = event2.id
+date7.save!
+date8.save!
 

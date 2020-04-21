@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_001707) do
+ActiveRecord::Schema.define(version: 2020_04_21_010659) do
 
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_001707) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "Admin"
   end
 
   create_table "votes", force: :cascade do |t|
@@ -128,6 +129,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_001707) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.integer "date_option_id"
+    t.string "comment"
     t.index ["date_option_id"], name: "index_votes_on_date_option_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
