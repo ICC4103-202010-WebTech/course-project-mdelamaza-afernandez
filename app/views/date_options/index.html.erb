@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Date Options</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @date_options.each do |date_option| %>
+      <tr>
+        <td><%= link_to 'Show', date_option %></td>
+        <td><%= link_to 'Edit', edit_date_option_path(date_option) %></td>
+        <td><%= link_to 'Destroy', date_option, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Date Option', new_date_option_path %>
