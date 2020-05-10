@@ -15,9 +15,22 @@
   </header>
   <nav>
     <ul id="navbar">
-      <li><%= link_to "Profile", events_path %></li>
-      <li><%= link_to "Mail Box", shopping_cart_path %></li>
-      <li><%= link_to "Search", customer_orders_path %></li>
+      <li><%= link_to "Profile", users_path %></li>
+      <li> <button type="button" class="btn btn-dark"><%= link_to "Mail Box", guests_path %></button></li>
+      <li><%= link_to "Search", events_path %></li>
     </ul>
   </nav>
+  <div id="container">
+    <main id="main_content">
+      <button type="button" class="btn">Basic</button>
+      <%= yield %>
+    </main>
+  </div>
+  <footer>
+    <h4>
+      Contact Information
+    </h4>
+    <p>Contact us at: help@MeetingOrganizationcom</p>
+  </footer>
+  </body>
 </html>

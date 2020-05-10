@@ -10,6 +10,7 @@ class GuestsController < ApplicationController
   # GET /guests/1
   # GET /guests/1.json
   def show
+    #@guest = Guest.find(params[:id])
   end
 
   # GET /guests/new
