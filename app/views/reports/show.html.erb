@@ -1,4 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_report_path(@report) %> |
-<%= link_to 'Back', reports_path %>
+<table class="table table-hover">
+  <thead>
+  <th>N</th>
+  <th>User_Id</th>
+  <th>User_Name</th>
+
+  </thead>
+  <tbody>
+  <% @reports.each_with_index do |report, i| %>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= report.user_id %></td>
+      <td><%= report.user.user_name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<!--<%#= link_to 'Edit', edit_report_path(@report) %> |-->
+<%#= link_to 'Back', reports_path %>
