@@ -1,4 +1,23 @@
 <p id="notice"><%= notice %></p>
 
+<table class="table table-hover">
+  <thead>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Members</th>
+  <th>Events</th>
+  <th>Report</th>
+  </thead>
+  <tbody>
+
+  <tr>
+    <td><%= @organization.name %></td>
+    <td><%= @organization.description %></td>
+    <td><%= link_to "Members", controller: "memberships", action: "show", organization_id: @organization %></td>
+    <td><%= link_to "Event", controller: "events", action: "index", organization_id: @organization %></td>
+    <td><%= link_to "Report", controller: "reports", action: "show", organization_id: @organization %></td>
+  </tr>
+  </tbody>
+</table>
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>

@@ -1,9 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<% @guest.each do |guest|%>
-    <%= guest.user_id %>
-<% end %>
+<%# @guest.each do |guest|%>
+    <%#= guest.user_id %>
+<%# end %>
 
 
-<%= link_to 'Edit', edit_guest_path(@guest) %> |
-<%= link_to 'Back', guests_path %>
+<!--<%#= link_to 'Edit', edit_guest_path(@guest) %> |-->
+<%#= link_to 'Back', guests_path %>
+
+<table class="table table-hover">
+  <thead>
+  <th>N</th>
+  <th>User_Id</th>
+  <th>User_Name</th>
+
+  </thead>
+  <tbody>
+  <% @guest.each_with_index do |guest, i| %>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= guest.user_id %></td>
+      <td><%= guest.user.user_name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

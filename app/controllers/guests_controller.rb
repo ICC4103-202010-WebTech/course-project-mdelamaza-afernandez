@@ -10,7 +10,8 @@ class GuestsController < ApplicationController
   # GET /guests/1
   # GET /guests/1.json
   def show
-    @guest = Guest.select(:user_id).where(event_id: params[:event_id])
+    @guest = Guest.includes(:user).where(event_id: params[:event_id])
+
   end
 
   # GET /guests/new

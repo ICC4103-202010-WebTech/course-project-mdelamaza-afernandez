@@ -10,6 +10,7 @@ class MembershipsController < ApplicationController
   # GET /memberships/1
   # GET /memberships/1.json
   def show
+    @membership = Membership.includes(:user).where(organization_id: params[:organization_id])
   end
 
   # GET /memberships/new
