@@ -2,32 +2,52 @@
 
 <h1>Events</h1>
 
-<table>
-  <thead>
-  <th>
-    Event Name
-  </th>
-  <th>
-    Event Location
-  </th>
-  <th>
-    Event Vote Date
-  </th>
-  </thead>
+<!--<table>-->
+<!--  <thead>-->
+<!--  <th>-->
+<!--    Event Name-->
+<!--  </th>-->
+<!--  <th>-->
+<!--    Event Location-->
+<!--  </th>-->
+<!--  <th>-->
+<!--    Event Vote Date-->
+<!--  </th>-->
 
+<!--  </thead>-->
+
+<!--  <tbody>-->
+    <%# @events.each do |event| %>
+<!--      <tr>-->
+<!--        <td><%#= link_to event.name, event %></td>-->
+<!--        <td><%#= event.location %></td>-->
+<!--        <td><%#= event.voted_date %></td>-->
+<!--        <td><%#= link_to 'Edit', edit_event_path(event) %></td>-->
+<!--        <td><%#= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--      </tr>-->
+    <%# end %>
+<!--  </tbody>-->
+</table>
+<table class="table table-hover">
+  <thead>
+  <th>Event</th>
+  <th>Location</th>
+  <th>Vote Date</th>
+  <th>Organization</th>
+  </thead>
   <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= link_to event.name, event %></td>
-        <td><%= event.location %></td>
-        <td><%= event.voted_date %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= link_to event.name, event %></td>
+      <td><%= event.location %></td>
+      <td><%= event.voted_date %></td>
+      <td><%= event.organization.name %></td>
+<!--      <td><%#= link_to 'Edit', edit_event_path(event) %></td>-->
+<!--      <td><%#= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+    </tr>
+  <% end %>
   </tbody>
 </table>
-
 <br>
 
 

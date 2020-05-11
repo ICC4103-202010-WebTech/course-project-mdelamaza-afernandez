@@ -28,5 +28,10 @@ Rails.application.routes.draw do
   resources :events, shallow: true do
     #resources da
   end
+  #
   resources :guests
+  resources :memberships
+  #
+  resources :organizations
+
 end

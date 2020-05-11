@@ -10,7 +10,14 @@ class ReportsController < ApplicationController
   # GET /reports/1
   # GET /reports/1.json
   def show
+<<<<<<< HEAD
     @report = Report.select(:user_id).where(event_id: params[:event_id])
+=======
+    @report = Report.where(event_id: params[:event_id])
+    #@reporto = Report.where(organization_id: params[:organization_id])
+    #@reportu = Report.where(user_id: params[:user_id])
+
+>>>>>>> f8011012dd746b13d334e70351ac07d8020e222c
   end
 
   # GET /reports/new
