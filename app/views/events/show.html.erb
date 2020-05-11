@@ -6,6 +6,7 @@
   <th>Description</th>
   <th>Guest</th>
   <th>Report</th>
+  <th>Comment</th>
   </thead>
   <tbody>
 
@@ -16,6 +17,7 @@
     <td><%= @event.description %></td>
     <td><%= link_to "Guests", controller: "guests", action: "show", event_id: @event %></td>
     <td><%= link_to "Report", controller: "reports", action: "show", event_id: @event %></td>
+    <td><%= link_to "Comments", controller: "comments", action: "show", event_id: @event %></td>
   </tr>
 
   </tbody>

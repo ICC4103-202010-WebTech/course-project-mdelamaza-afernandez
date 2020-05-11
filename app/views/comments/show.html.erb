@@ -1,4 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<table class="table table-hover">
+  <thead>
+  <th>N</th>
+  <th>User name</th>
+  <th>Comment</th>
+
+  </thead>
+  <tbody>
+  <% @comment.each_with_index do |comment, i| %>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= comment.user.user_name %></td>
+      <td><%= comment.msg %></td>
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>

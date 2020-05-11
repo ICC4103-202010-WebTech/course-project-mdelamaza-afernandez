@@ -5,6 +5,7 @@ class MailBoxesController < ApplicationController
   # GET /mail_boxes.json
   def index
     @mail_boxes = MailBox.all
+    #@mail_box = MailBox.where(user_id: params[:user_id])
   end
 
   # GET /mail_boxes/1
