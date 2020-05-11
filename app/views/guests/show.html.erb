@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% @guest.each do |guest|%>
+    <%= guest.user_id %>
+<% end %>
+
+
 <%= link_to 'Edit', edit_guest_path(@guest) %> |
 <%= link_to 'Back', guests_path %>

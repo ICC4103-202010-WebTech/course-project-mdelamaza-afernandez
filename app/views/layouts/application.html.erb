@@ -1,36 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>CourseProjectMdelamazaAfernandez</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>CourseProjectMdelamazaAfernandez</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-  <header>
-    <h1><%= link_to "Meeting Organization", root_path %></h1>
-  </header>
-  <nav>
-    <ul id="navbar">
-      <li><%= link_to "Profile", users_path %></li>
-      <li> <button type="button" class="btn btn-dark"><%= link_to "Mail Box", guests_path %></button></li>
-      <li><%= link_to "Search", events_path %></li>
-    </ul>
-  </nav>
-  <div id="container">
-    <main id="main_content">
-      <button type="button" class="btn">Basic</button>
-      <%= yield %>
-    </main>
-  </div>
-  <footer>
-    <h4>
-      Contact Information
-    </h4>
-    <p>Contact us at: help@MeetingOrganizationcom</p>
-  </footer>
-  </body>
+<body>
+<div class="container">
+
+  <h1 class="text-muted"><%= link_to "Meeting Organization", root_path %></h1>
+
+</div>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="<%= user_path(1)%>">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<%= events_path%>">Mail Box</a>
+    </li>
+    <li class="nav-item">
+      <form class="form-inline" action="/action_page.php">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-success" type="submit">Search</button>
+      </form>
+    </li>
+  </ul>
+
+</nav>
+
+<!--  <nav>-->
+<!--    <ul id="navbar">-->
+
+<!--      <li><%#= link_to "Profile", users_path %></li>-->
+<!--      <li><button type="button" class="btn btn-dark"><%#= link_to "Mail Box", guests_path %></button></li>-->
+<!--      <li><%#= link_to "Search", events_path %></li>-->
+<!--    </ul>-->
+<!--  </nav>-->
+<div id="container">
+  <!--    <aside id="customer_info">-->
+  <%#= render partial: "customers/customer", object: @current_user %>
+  <!--    </aside>-->
+  <main id="main_content">
+
+    <%= yield %>
+  </main>
+</div>
+<footer>
+  <h4>
+    Contact Information
+  </h4>
+  <p>Contact us at: help@MeetingOrganizationcom</p>
+</footer>
+</body>
 </html>

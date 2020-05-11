@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
 <%= @event.name %>
+<%= @event.location %>
+<%= @event.description %>
+<li><%= link_to "Guests", controller: "guests", action: "show", event_id: @event %></li>
+<li><%= link_to "Report", controller: "reports", action: "show", event_id: @event %></li>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

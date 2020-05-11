@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_action :set_customer
+  before_action :set_user
 
-  private
 
-  def set_customer
-    @users = User.first
+
+  def set_user
+    @current_user = User.first
   end
 end
