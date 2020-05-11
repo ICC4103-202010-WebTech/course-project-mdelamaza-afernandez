@@ -1,10 +1,6 @@
 //#const { environment } = require('@rails/webpacker')
 
-//module.exports = environment
-<<<<<<< HEAD
 
-=======
->>>>>>> f8011012dd746b13d334e70351ac07d8020e222c
 
 const { environment } = require('@rails/webpacker')
 

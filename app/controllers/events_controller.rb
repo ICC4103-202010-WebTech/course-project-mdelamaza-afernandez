@@ -10,13 +10,13 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-<<<<<<< HEAD
+
     #@event=Event.find(params[:id])
     #@guest = Guest.where(event_id: params[:event_id])
 
-=======
+
     #@event=Event.where(organization_id: params[:organization_id])
->>>>>>> f8011012dd746b13d334e70351ac07d8020e222c
+
   end
   # GET /events/new
   def new
