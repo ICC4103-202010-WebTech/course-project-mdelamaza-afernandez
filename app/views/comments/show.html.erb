@@ -11,7 +11,7 @@
   <% @comment.each_with_index do |comment, i| %>
     <tr>
       <td><%= i+1 %></td>
-      <td><%= comment.user.user_name %></td>
+      <td><%= link_to comment.user.user_name, controller: "users", action: "show", id: comment.user %></td>
       <td><%= comment.msg %></td>
     </tr>
   <% end %>

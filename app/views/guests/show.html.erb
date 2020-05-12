@@ -24,11 +24,12 @@
     <tr>
       <td><%= i+1 %></td>
       <td><%= guest.user_id %></td>
-      <td><%= guest.user.user_name %></td>
+      <td><%= link_to guest.user.user_name, controller: "users", action: "show", id: guest.user %></td>
     </tr>
   <% end %>
   </tbody>
-
+<!--  <button type="button" class="btn btn-outline-secondary"><%#= link_to 'Edit', edit_date_option_path(@date_option) %></button> |-->
+  <button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
 </table>
 
 

@@ -14,7 +14,7 @@
     <tr>
       <td><%= i+1 %></td>
       <td><%= membership.organization_id %></td>
-      <td><%= membership.organization.name %></td>
+      <td><%= link_to membership.organization.name, controller: "organizations", action: "show", id: membership.organization %></td>
     </tr>
   <% end %>
   </tbody>

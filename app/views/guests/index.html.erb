@@ -32,7 +32,7 @@
     <tr>
       <td><%= i+1 %></td>
       <td><%= guest.event_id %></td>
-      <td><%= guest.event.name %></td>
+      <td><%= link_to guest.event.name, controller: "events", action: "show", id: guest.event %></td>
     </tr>
   <% end %>
   </tbody>

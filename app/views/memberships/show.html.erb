@@ -12,10 +12,11 @@
     <tr>
       <td><%= i+1 %></td>
       <td><%= membership.user_id %></td>
-      <td><%= membership.user.user_name %></td>
+      <td><%= link_to membership.user.user_name, controller: "users", action: "show", id: membership.user %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 <%= link_to 'Edit', edit_membership_path(@membership) %> |
 <%= link_to 'Back', memberships_path %>
+

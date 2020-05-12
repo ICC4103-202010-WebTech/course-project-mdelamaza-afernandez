@@ -30,6 +30,5 @@
 <%#= @event.description %>
 <!--<li><%#= link_to "Guests", controller: "guests", action: "show", event_id: @event %></li>-->
 <!--<li><%#= link_to "Report", controller: "reports", action: "show", event_id: @event %></li>-->
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_event_path(@event) %></button> |
+<button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
