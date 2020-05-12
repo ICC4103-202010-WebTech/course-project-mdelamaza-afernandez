@@ -4,14 +4,14 @@ class API::V1::EventsController < APIController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where(organization_id: params[:organization_id])
+    @events = Event.all
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
-
-    #@event=Event.find(params[:id])
+    puts "hola"
+    @event=Event.find(params[:id])
     #@guest = Guest.where(event_id: params[:event_id])
 
 
@@ -75,6 +75,6 @@ class API::V1::EventsController < APIController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {})
+      params.fetch(:event, {}).permit(:id, :name, :description, :voted_date, :location)
     end
 end

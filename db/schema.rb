@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_010659) do
+ActiveRecord::Schema.define(version: 2020_05_12_224617) do
 
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2020_04_21_010659) do
     t.string "inbox"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_mail_boxes_on_user_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -140,6 +142,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_010659) do
   add_foreign_key "events", "organizations"
   add_foreign_key "guests", "events"
   add_foreign_key "guests", "users"
+  add_foreign_key "mail_boxes", "users"
   add_foreign_key "memberships", "organizations"
   add_foreign_key "memberships", "users"
   add_foreign_key "multimedia", "events"
