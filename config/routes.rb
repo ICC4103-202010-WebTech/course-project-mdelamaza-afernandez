@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   #
   resources :guests
   resources :memberships
+  resources :mail_boxes
   #
   resources :organizations
 

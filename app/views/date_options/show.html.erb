@@ -1,4 +1,20 @@
 <p id="notice"><%= notice %></p>
+<table class="table table-hover">
+  <thead>
+  <th>N</th>
+  <th>Date</th>
 
-<%= link_to 'Edit', edit_date_option_path(@date_option) %> |
-<%= link_to 'Back', date_options_path %>
+  </thead>
+  <tbody>
+  <% @date_option.each_with_index do |date_option, i| %>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= date_option.date %></td>
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>
+
+<!--<%#= link_to 'Edit', edit_date_option_path(@date_option) %> |-->
+<%#= link_to 'Back', date_options_path %>

@@ -1,4 +1,35 @@
 <p id="notice"><%= notice %></p>
+<table class="table table-hover">
+<thead>
+<th>User Name</th>
+<th>Email</th>
+<th>Location</th>
+<th>Description</th>
+<th>Events</th>
+<th>Organizations</th>
+</thead>
+<tbody>
+<% @user.each_with_index do |user| %>
+  <tr>
+    <td><%= user.user_name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.location %></td>
+    <td><%= user.description %></td>
+    <td><%= link_to "Events", controller: "guests", action: "index", user_id: user %></td>
+    <td><%= link_to "Organizations", controller: "memberships", action: "index", user_id: user %></td>
+  </tr>
+<% end %>
 
+<!--<tr>-->
+<!--  <td><%#= @user.user_name %></td>-->
+<!--  <td><%#= @user.email %></td>-->
+<!--  <td><%#= @user.location %></td>-->
+<!--  <td><%#= @user.description %></td>-->
+<!--  <td><%#= link_to "Events", controller: "guests", action: "index", event_id: @user %></td>-->
+<!--  <td><%#= link_to "Dates Options", controller: "date_options", action: "show", event_id: @event %></td>-->
+<!--</tr>-->
+
+</tbody>
+</table>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

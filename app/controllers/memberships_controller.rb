@@ -4,7 +4,7 @@ class MembershipsController < ApplicationController
   # GET /memberships
   # GET /memberships.json
   def index
-    @memberships = Membership.all
+    @memberships = Membership.includes(:organization).where(user_id: params[:user_id])
   end
 
   # GET /memberships/1

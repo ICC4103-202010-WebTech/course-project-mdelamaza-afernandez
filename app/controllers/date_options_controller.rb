@@ -10,6 +10,7 @@ class DateOptionsController < ApplicationController
   # GET /date_options/1
   # GET /date_options/1.json
   def show
+    @date_option = DateOption.where(event_id: params[:event_id])
   end
 
   # GET /date_options/new
