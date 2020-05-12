@@ -34,5 +34,12 @@ Rails.application.routes.draw do
   resources :mail_boxes
   #
   resources :organizations
-
+  #Routs API
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :events do
+        resources :comments
+      end
+    end
+  end
 end

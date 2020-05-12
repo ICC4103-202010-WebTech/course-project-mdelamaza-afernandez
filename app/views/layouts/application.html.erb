@@ -10,12 +10,37 @@
 </head>
 
 <body>
-<div class="container">
 
+<div class="container">
+  <style>
+    a:link {
+      color: black;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: black;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: black;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+
+    a:active {
+      color: black;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+  </style>
   <h1 class="text-muted"><%= link_to "Meeting Organization", root_path %></h1>
 
 </div>
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
   <!-- Links -->
   <ul class="navbar-nav">
@@ -23,7 +48,7 @@
       <a class="nav-link" href="<%= user_path(1)%>">Profile</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="<%= mail_box_path(1)%>">Mail Box</a>
+      <a class="nav-link" href="<%= user_mail_boxes_path(1)%>">Mail Box</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<%=user_notifications_path(1) %>">Notifications</a>
