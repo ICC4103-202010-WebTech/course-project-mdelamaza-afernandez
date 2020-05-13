@@ -4,6 +4,15 @@ Martín de la Maza
 Alvaro Fernández
 
 
+Entrega 2
+https://www.getpostman.com/collections/0004a4a9875af1f59c1f
+
+
+
+
+
+
+Entrega 1.2
 #Gitignore file sql lines are commented, you may need to use rade db:drop ( not sure ) 
 
 Model Layer demostration:
