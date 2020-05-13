@@ -2,19 +2,23 @@
 
 <h1>Notifications</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Id</th>
+      <th>MSG</th>
+      <th>Event</th>
     </tr>
   </thead>
 
   <tbody>
     <% @notifications.each do |notification| %>
       <tr>
-        <td><%= link_to 'Show', notification %></td>
-        <td><%= link_to 'Edit', edit_notification_path(notification) %></td>
-        <td><%= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= notification.id%></td>
+        <td><%= notification.msg %></td>
+        <td><%= link_to notification.event.name,controller: "events", action: "show", id: notification.event %></td>
+<!--        <td><%#= link_to 'Edit', edit_notification_path(notification) %></td>-->
+<!--        <td><%#= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
   </tbody>

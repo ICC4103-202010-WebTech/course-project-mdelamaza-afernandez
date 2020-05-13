@@ -11,9 +11,9 @@ class ReportsController < ApplicationController
   # GET /reports/1.json
   def show
 
-    @report = Report.select(:user_id).where(event_id: params[:event_id])
-
     @report = Report.where(event_id: params[:event_id])
+
+      #@report = Report.where(event_id: params[:event_id])
     #@reporto = Report.where(organization_id: params[:organization_id])
     #@reportu = Report.where(user_id: params[:user_id])
 

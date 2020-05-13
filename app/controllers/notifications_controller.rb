@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
   # GET /notifications.json
   def index
     #@notifications = Notification.all
-    @notifications = Notification.where(user_id: params[:user_id])
+    @notifications = Notification.includes(:event).where(user_id: params[:user_id])
   end
 
   # GET /notifications/1

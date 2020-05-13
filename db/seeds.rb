@@ -187,10 +187,17 @@ mail_box3.user_id=user3.id
 mail_box4.user_id=user4.id
 mail_box3.save!
 mail_box4.save!
-# #Reports
-# report1 = Report.create(description: "Evento publico, Alvaro se entero")
-# report1.event_id=event1.id
-# report1.comment_id= null
-# report1.organization_id= null
-# report1.save!
+#Reports
+report1 = Report.create(description: "Evento publico, Alvaro se entero")
+report1.event_id=event1.id
+report1.comment_id= comment1.id
+report1.organization_id=organization1.id
+report1.user_id=user3.id
+report1.save!
+report2 = Report.create(description: "Camila se quedo dormida y no abrio la puerta")
+report2.event_id=event2.id
+report2.comment_id= comment1.id
+report2.organization_id=organization2.id
+report2.user_id=user2.id
+report2.save!
 
