@@ -117,76 +117,76 @@ date7.event_id = event2.id
 date8.event_id = event2.id
 date7.save!
 date8.save!
-# #notification
-# # uno
-# notification1=Notification.create(msg:"notificacion 1")
-# notification2=Notification.create(msg:"notificacion 2")
-# notification3=Notification.create(msg:"notificacion 3")
-# notification1.user_id=user1.id
-# notification2.user_id=user1.id
-# notification3.user_id=user4.id
-# notification1.event_id=event1.id
-# notification2.event_id=event2.id
-# notification3.event_id=event2.id
-# notification1.save!
-# notification2.save!
-# notification3.save!
-# # dos
-# notification4=Notification.create(msg:"notificacion 4")
-# notification5=Notification.create(msg:"notificacion 5")
-# notification6=Notification.create(msg:"notificacion 6")
-# notification4.user_id=user3.id
-# notification5.user_id=user4.id
-# notification6.user_id=user2.id
-# notification4.event_id=event1.id
-# notification5.event_id=event1.id
-# notification6.event_id=event2.id
-# notification4.save!
-# notification5.save!
-# notification6.save!
-# #votes
-# # 1
-# vote1 = Vote.create()
-# vote2 = Vote.create()
-# vote1.date_option_id = date1.id
-# vote2.date_option_id = date2.id
-# vote1.user_id = user1.id
-# vote2.user_id = user3.id
-# vote1.save!
-# vote2.save!
-# #2
-# vote3 = Vote.create()
-# vote4 = Vote.create()
-# vote3.date_option_id = date4.id
-# vote4.date_option_id = date8.id
-# vote3.user_id = user4.id
-# vote4.user_id = user1.id
-# vote3.save!
-# vote4.save!
-# #3
-# vote5 = Vote.create()
-# vote6 = Vote.create()
-# vote5.date_option_id = date7.id
-# vote6.date_option_id = date6.id
-# vote5.user_id = user2.id
-# vote6.user_id = user3.id
-# vote5.save!
-# vote6.save!
-# #mail box
-# # 1
-# mail_box1 = MailBox.create(inbox: "msg 1")
-# mail_box2 = MailBox.create(inbox: "msg 2")
-# mail_box1.user_id=user1.id
-# mail_box2.user_id=user2.id
-# mail_box1.save!
-# mail_box2.save!
-# #2
-# mail_box3 = MailBox.create(inbox: "msg 3")
-# mail_box4 = MailBox.create(inbox: "msg 4")
-# mail_box3.user_id=user3.id
-# mail_box4.user_id=user4.id
-# mail_box3.save!
-# mail_box4.save!
+#notification
+# uno
+notification1=Notification.create(msg:"notificacion 1")
+notification2=Notification.create(msg:"notificacion 2")
+notification3=Notification.create(msg:"notificacion 3")
+notification1.user_id=user1.id
+notification2.user_id=user1.id
+notification3.user_id=user4.id
+notification1.event_id=event1.id
+notification2.event_id=event2.id
+notification3.event_id=event2.id
+notification1.save!
+notification2.save!
+notification3.save!
+# dos
+notification4=Notification.create(msg:"notificacion 4")
+notification5=Notification.create(msg:"notificacion 5")
+notification6=Notification.create(msg:"notificacion 6")
+notification4.user_id=user3.id
+notification5.user_id=user4.id
+notification6.user_id=user2.id
+notification4.event_id=event1.id
+notification5.event_id=event1.id
+notification6.event_id=event2.id
+notification4.save!
+notification5.save!
+notification6.save!
+#votes
+# 1
+vote1 = Vote.create()
+vote2 = Vote.create()
+vote1.date_option_id = date1.id
+vote2.date_option_id = date2.id
+vote1.user_id = user1.id
+vote2.user_id = user3.id
+vote1.save!
+vote2.save!
+#2
+vote3 = Vote.create()
+vote4 = Vote.create()
+vote3.date_option_id = date4.id
+vote4.date_option_id = date8.id
+vote3.user_id = user4.id
+vote4.user_id = user1.id
+vote3.save!
+vote4.save!
+#3
+vote5 = Vote.create()
+vote6 = Vote.create()
+vote5.date_option_id = date7.id
+vote6.date_option_id = date6.id
+vote5.user_id = user2.id
+vote6.user_id = user3.id
+vote5.save!
+vote6.save!
+#mail box
+# 1
+mail_box1 = MailBox.create(inbox: "msg 1")
+mail_box2 = MailBox.create(inbox: "msg 2")
+mail_box1.user_id=user1.id
+mail_box2.user_id=user2.id
+mail_box1.save!
+mail_box2.save!
+#2
+mail_box3 = MailBox.create(inbox: "msg 3")
+mail_box4 = MailBox.create(inbox: "msg 4")
+mail_box3.user_id=user3.id
+mail_box4.user_id=user4.id
+mail_box3.save!
+mail_box4.save!
 # #Reports
 # report1 = Report.create(description: "Evento publico, Alvaro se entero")
 # report1.event_id=event1.id
