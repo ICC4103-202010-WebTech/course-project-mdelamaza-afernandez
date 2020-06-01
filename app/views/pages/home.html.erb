@@ -1,20 +1,12 @@
-<h4>Upcoming Events</h4>
 
-<table class="table table-hover">
-  <thead>
-  <th>N</th>
-  <th>Event</th>
-  <th>Location</th>
-  <th>Date</th>
-  </thead>
-  <tbody>
-  <% @events.each_with_index do |event, i| %>
-    <tr>
-      <td><%= i+1 %></td>
-      <td><%= link_to event.name, event %></td>
-      <td><%= event.location %></td>
-      <td><%= event.voted_date %></td>
-    </tr>
+<div class="row ml-0 mt-3">
+  <h2>Upcoming Events</h2>
+</div>
+<div class="row ml-0 mt-2">
+  <p>Upcoming events are truly awesome in this COVID-19 season!</p>
+</div>
+<div class="row">
+  <% @events.each do |event| %>
+    <%= render partial: 'events/event_title', locals: { event: event } %>
   <% end %>
-  </tbody>
-</table>
+</div>

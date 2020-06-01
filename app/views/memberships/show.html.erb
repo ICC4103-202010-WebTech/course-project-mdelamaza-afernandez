@@ -1,22 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<table class="table table-hover">
-  <thead>
-  <th>N</th>
-  <th>User_Id</th>
-  <th>User_Name</th>
+<!--<table class="table table-hover">-->
+<!--  <thead>-->
+<!--  <th>N</th>-->
+<!--  <th>User_Id</th>-->
+<!--  <th>User_Name</th>-->
 
-  </thead>
-  <tbody>
-  <% @membership.each_with_index do |membership, i| %>
-    <tr>
-      <td><%= i+1 %></td>
-      <td><%= membership.user_id %></td>
-      <td><%= link_to membership.user.user_name, controller: "users", action: "show", id: membership.user %></td>
-    </tr>
+<!--  </thead>-->
+<!--  <tbody>-->
+  <%# @membership.each_with_index do |membership, i| %>
+<!--    <tr>-->
+<!--      <td><%#= i+1 %></td>-->
+<!--      <td><%#= membership.user_id %></td>-->
+<!--      <td><%#= link_to membership.user.user_name, controller: "users", action: "show", id: membership.user %></td>-->
+<!--    </tr>-->
+  <%# end %>
+<!--  </tbody>-->
+<!--</table>-->
+<!--<%#= link_to 'Edit', edit_membership_path(@membership) %> |-->
+<%#= link_to 'Back', memberships_path %>
+
+<div class="row">
+  <% @membership.each do |membership| %>
+    <%= render partial: 'users/user_title', locals: { user: membership.user } %>
   <% end %>
-  </tbody>
-</table>
-<%= link_to 'Edit', edit_membership_path(@membership) %> |
-<%= link_to 'Back', memberships_path %>
-
+</div>

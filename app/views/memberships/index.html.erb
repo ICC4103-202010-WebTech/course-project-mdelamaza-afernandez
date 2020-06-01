@@ -1,25 +1,38 @@
+<!--<p id="notice"><%#= notice %></p>-->
+
+<!--<h1>Memberships</h1>-->
+
+<!--<table class="table table-hover">-->
+<!--  <thead>-->
+<!--  <th>N</th>-->
+<!--  <th>Organization Id</th>-->
+<!--  <th>Organization Name</th>-->
+
+<!--  </thead>-->
+<!--  <tbody>-->
+  <%# @memberships.each_with_index do |membership, i| %>
+<!--    <tr>-->
+<!--      <td><%#= i+1 %></td>-->
+<!--      <td><%#= membership.organization_id %></td>-->
+<!--      <td><%#= link_to membership.organization.name, controller: "organizations", action: "show", id: membership.organization %></td>-->
+<!--    </tr>-->
+  <%# end %>
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--<br>-->
+
+<%#= link_to 'New Membership', new_membership_path %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Memberships</h1>
+<h1>Your Memberships</h1>
 
-<table class="table table-hover">
-  <thead>
-  <th>N</th>
-  <th>Organization Id</th>
-  <th>Organization Name</th>
 
-  </thead>
-  <tbody>
-  <% @memberships.each_with_index do |membership, i| %>
-    <tr>
-      <td><%= i+1 %></td>
-      <td><%= membership.organization_id %></td>
-      <td><%= link_to membership.organization.name, controller: "organizations", action: "show", id: membership.organization %></td>
-    </tr>
+<%#= link_to 'New Membership', new_membership_path %>
+
+<div class="row">
+  <% @memberships.each do |membership| %>
+    <%= render partial: 'organizations/organization_title', locals: { organization: membership.organization } %>
   <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Membership', new_membership_path %>
+</div>

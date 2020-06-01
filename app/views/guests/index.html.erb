@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
 
-<h1>Guests</h1>
+<!--<h1>Guests</h1>-->
 
 <!--<table>-->
 <!--  <thead>-->
@@ -20,26 +20,16 @@
 <!--  </tbody>-->
 <!--</table>-->
 
-<table class="table table-hover">
-  <thead>
-  <th>N</th>
-  <th>Event Id</th>
-  <th>Event Name</th>
+<p id="notice"><%= notice %></p>
 
-  </thead>
-  <tbody>
-  <% @guests.each_with_index do |guest, i| %>
-    <tr>
-      <td><%= i+1 %></td>
-      <td><%= guest.event_id %></td>
-      <td><%= link_to guest.event.name, controller: "events", action: "show", id: guest.event %></td>
-    </tr>
+<h1>YOUR EVENTS</h1>
+
+
+<%#= link_to 'New Guest', new_guest_path %>
+
+<div class="row">
+  <% @guests.each do |guest| %>
+    <%= render partial: 'events/event_title', locals: { event: guest.event } %>
   <% end %>
-  </tbody>
-
-</table>
-
-<br>
-
-<%= link_to 'New Guest', new_guest_path %>
+</div>
 
