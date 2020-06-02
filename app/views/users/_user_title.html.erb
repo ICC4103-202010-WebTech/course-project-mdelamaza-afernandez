@@ -1,5 +1,12 @@
 <div class="col-md-4">
   <div class="card mb-4 shadow-sm">
+    <div>
+      <%if user.flyer.attached?%>
+        <%= link_to image_tag(user.flyer, width: "400px"), url_for(user) %>
+      <%else%>
+        <%= link_to image_tag("thumbnail.svg", class: "card-img-top", width: "400px", background: "#55595c", color: "#eceeef"), url_for(user) %>
+      <%end%>
+    </div>
     <div class="card-body">
       <p class="card-text">
         <%= "Name:" %>

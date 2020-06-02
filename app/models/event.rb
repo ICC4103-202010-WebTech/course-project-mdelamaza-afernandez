@@ -1,5 +1,4 @@
 class Event < ApplicationRecord
-  has_many :date_options
   has_many :guests, dependent: :destroy
   has_many :users, through: :guests
   has_many :notifications
@@ -15,4 +14,5 @@ class Event < ApplicationRecord
   def log_destroy_action
     puts 'Event destroyed'
   end
+  has_one_attached :flyer
 end
