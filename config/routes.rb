@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :events
+  resources :guests
+  resources :memberships
+  resources :mail_boxes
+
+  resources :organizations
   resources :users do
     resources :multimedium
     resources :mail_boxes
@@ -34,16 +40,6 @@ Rails.application.routes.draw do
     end
 
   end
-
-  resources :events, shallow: true do
-    #resources da
-  end
-  #
-  resources :guests
-  resources :memberships
-  resources :mail_boxes
-  #
-  resources :organizations
 
 
 end
