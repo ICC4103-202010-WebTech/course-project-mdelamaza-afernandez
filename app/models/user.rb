@@ -33,4 +33,7 @@ class User < ApplicationRecord
   has_many :votes
   has_many :date_options, through: :votes
   has_one_attached :flyer
+  def self.search(search)
+    where("lower(events.name) LIKE :search OR lower(organization.name) LIKE :search OR lower(user.user_name) LIKE :search", search: "%#{search.downcase}%").uniq
+  end
   end
