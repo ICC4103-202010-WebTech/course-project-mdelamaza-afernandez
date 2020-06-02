@@ -5,7 +5,10 @@
   <th>N</th>
   <th>User name</th>
   <th>Comment</th>
-
+  <th>Edit</th>
+  <th>
+    <%#= link_to "Add Comment", new_event_comment_path(@comment[0].event_id), class: ["btn", "btn-primary"] %>
+  </th>
   </thead>
   <tbody>
   <% @comment.each_with_index do |comment, i| %>
@@ -13,6 +16,8 @@
       <td><%= i+1 %></td>
       <td><%= link_to comment.user.user_name, controller: "users", action: "show", id: comment.user %></td>
       <td><%= comment.msg %></td>
+      <td><%= link_to "Edit", edit_comment_path(comment), class: ["btn", "btn-primary"] %></td>
+
     </tr>
   <% end %>
   </tbody>

@@ -13,10 +13,11 @@ Rails.application.routes.draw do
   end
 
   resources :events
+  #
   resources :guests
   resources :memberships
   resources :mail_boxes
-
+  #
   resources :organizations
   resources :users do
     resources :multimedium
