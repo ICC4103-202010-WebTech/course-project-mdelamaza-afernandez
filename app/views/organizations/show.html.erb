@@ -1,12 +1,17 @@
 <p id="notice"><%= notice %></p>
-
+<div>
+  <%if @organization.flyer.attached?%>
+    <%=image_tag(@organization.flyer, width: "400px")%>
+  <%else%>
+    <%=image_tag("thumbnail.svg", class: "card-img-top", width: "400px", background: "#55595c", color: "#eceeef") %>
+  <%end%>
+</div>
 <table class="table table-hover">
   <thead>
   <th>Name</th>
   <th>Description</th>
   <th>Members</th>
   <th>Events</th>
-  <th>Report</th>
   </thead>
   <tbody>
 
@@ -15,9 +20,12 @@
     <td><%= @organization.description %></td>
     <td><%= link_to "Members", controller: "memberships", action: "show", organization_id: @organization %></td>
     <td><%= link_to "Event", controller: "events", action: "index", organization_id: @organization %></td>
-    <td><%= link_to "Report", controller: "reports", action: "show", organization_id: @organization %></td>
+
   </tr>
   </tbody>
 </table>
-<button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_organization_path(@organization) %></button> |
+<div class="btn-group">
+<button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_organization_path(@organization) %></button>
+<button type="button" class="btn btn-outline-secondary"><%= link_to "Report", controller: "reports", action: "show", organization_id: @organization %></button>
 <button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
+</div>

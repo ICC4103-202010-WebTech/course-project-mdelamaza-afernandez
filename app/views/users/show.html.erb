@@ -1,4 +1,11 @@
 <p id="notice"><%= notice %></p>
+<div>
+  <%if @user.flyer.attached?%>
+    <%= image_tag(user.flyer, width: "400px")%>
+  <%else%>
+    <%= image_tag("thumbnail.svg", class: "card-img-top", width: "400px", background: "#55595c", color: "#eceeef")%>
+  <%end%>
+</div>
 <table class="table table-hover">
 <thead>
 <th>User Name</th>
@@ -9,29 +16,23 @@
 <th>Organizations</th>
 </thead>
 <tbody>
-<% @user.each_with_index do |user| %>
   <tr>
-    <td><%= user.user_name %></td>
-    <td><%= user.email %></td>
-    <td><%= user.location %></td>
-    <td><%= user.description %></td>
-    <td><%= link_to "Events", controller: "guests", action: "index", user_id: user %></td>
-    <td><%= link_to "Organizations", controller: "memberships", action: "index", user_id: user %></td>
+    <td><%= @user.user_name %></td>
+    <td><%= @user.email %></td>
+    <td><%= @user.location %></td>
+    <td><%= @user.description %></td>
+    <td><%= link_to "Events", controller: "guests", action: "index", user_id: @user %></td>
+    <td><%= link_to "Organizations", controller: "memberships", action: "index", user_id: @user %></td>
   </tr>
 
-<% end %>
-
-<!--<tr>-->
-<!--  <td><%#= @user.user_name %></td>-->
-<!--  <td><%#= @user.email %></td>-->
-<!--  <td><%#= @user.location %></td>-->
-<!--  <td><%#= @user.description %></td>-->
-<!--  <td><%#= link_to "Events", controller: "guests", action: "index", event_id: @user %></td>-->
-<!--  <td><%#= link_to "Dates Options", controller: "date_options", action: "show", event_id: @event %></td>-->
-<!--</tr>-->
 
 </tbody>
 </table>
-<button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_user_path(@user[0]) %></button> |
-<button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
-
+<div class="btn-group">
+  <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_user_path(@user) %></button>
+  <button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
+</div>
+<div class="btn-group">
+  <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Event', events_path%></button>
+  <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Organization', organizations_path(Organization.all) %></button>
+</div>

@@ -69,6 +69,6 @@ class OrganizationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def organization_params
-      params.fetch(:organization, {}).permit(:name,:description,:flyer)
+      params.fetch(:organization, {}).permit(:name,:description,:flyer,:id)
     end
 end
