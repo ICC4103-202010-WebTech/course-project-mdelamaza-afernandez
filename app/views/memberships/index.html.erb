@@ -33,6 +33,7 @@
 
 <div class="row">
   <% @memberships.each do |membership| %>
-    <%= render partial: 'organizations/organization_title', locals: { organization: membership.organization } %>
+    <% a= membership.user==@current_user and membership.owner %>
+    <%= render partial: 'organizations/organization_title', locals: { organization: membership.organization, owner: a , admin: false } %>
   <% end %>
 </div>

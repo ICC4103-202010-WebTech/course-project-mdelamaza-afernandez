@@ -36,6 +36,7 @@
 
 <div class="row">
   <% @guest.each do |guest| %>
-    <%= render partial: 'users/user_title', locals: { user: guest.user } %>
+    <% a= guest.user==@current_user %>
+    <%= render partial: 'users/user_title', locals: { user: guest.user, owner: a , admin: false } %>
   <% end %>
 </div>

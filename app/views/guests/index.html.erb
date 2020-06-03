@@ -20,16 +20,22 @@
 <!--  </tbody>-->
 <!--</table>-->
 
-<p id="notice"><%= notice %></p>
-
-<h1>YOUR EVENTS</h1>
-
-
 <%#= link_to 'New Guest', new_guest_path %>
 
+<p id="notice"><%= notice %></p>
+<h1>Your Created Events</h1>
 <div class="row">
   <% @guests.each do |guest| %>
-    <%= render partial: 'events/event_title', locals: { event: guest.event } %>
+    <% if guest.owner==true %>
+      <%= render partial: 'events/event_title', locals: { event: guest.event , owner: true , admin: false} %>
+    <% end %>
+  <% end %>
+</div>
+<h1>All Your Events</h1>
+<div class="row">
+  <% a= guest.user==@current_user %>
+  <% @guests.each do |guest| %>
+    <%= render partial: 'events/event_title', locals: { event: guest.event, owner: a , admin: false } %>
   <% end %>
 </div>
 

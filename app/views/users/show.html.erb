@@ -29,7 +29,9 @@
 </tbody>
 </table>
 <div class="btn-group">
-  <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_user_path(@user) %></button>
+  <%if @current_user==@user %>
+      <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_user_path(@user) %></button>
+    <%end %>
   <button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
 </div>
 <div class="btn-group">

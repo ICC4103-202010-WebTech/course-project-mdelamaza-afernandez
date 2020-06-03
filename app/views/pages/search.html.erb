@@ -21,48 +21,68 @@
 
 <p id="notice"><%= notice %></p>
 <h3>Search Result of User</h3>
-
+<div class="row">
 <% @matchUser.each do |user| %>
-  <%= render partial: 'users/user_title', locals: { user: user } %>
+    <% a= user==@current_user %>
+  <%= render partial: 'users/user_title', locals: { user: user , owner: a , admin: false} %>
   <%#= link_to user.user_name, user_path(user.id)%>
 <% end %>
-<hr>
+</div>
+  <hr>
 <h3>Search Result of Event</h3>
+  <div class="row">
 <% @matchEvent.each do |event| %>
-  <%= render partial: 'events/event_title', locals: { event: event } %>
+      <% a= Guest.where(event_id: event , owner: true)[0].user==@current_user%>
+
+  <%= render partial: 'events/event_title', locals: { event: event, owner: a , admin: false } %>
   <%#= link_to event.name, event_path(event.id)%>
 <% end %>
-<hr>
+  </div>
+    <hr>
 <h3>Search Result of Organization</h3>
+    <div class="row">
 <% @matchOrganization.each do |organization| %>
-  <%= render partial: 'organizations/organization_title', locals: { organization: organization } %>
+        <% a= Membership.where(organization_id: organization , owner: true)[0].user==@current_user%>
+  <%= render partial: 'organizations/organization_title', locals: { organization: organization , owner: a , admin: false} %>
   <%#= link_to organization.name, organization_path(organization.id)%>
 <% end %>
-<hr>
+    </div>
+      <hr>
 <h3>Search Result of Event by creator</h3>
+      <div class="row">
 <% Event.all.each do |event| %>
+          <% a=Guest.where(event_id: event , owner: true)[0].user==@current_user%>
+
   <% event.guests.each do |guest| %>
     <%@matchId.ids.each do |id|%>
       <% if guest.user.id==id and guest.owner == true %>
-        <%= render partial: 'events/event_title', locals: { event: event } %>
+        <%= render partial: 'events/event_title', locals: { event: event , owner: a , admin: false} %>
         <%#= render partial: 'events/event_title', locals: { event: event } %>
       <% end %>
     <% end %>
   <% end %>
 <% end %>
+      </div>
 <%# @matchCreator.each do |event| %>
 <%#= render partial: 'events/event_title', locals: { event: event } %>
 <%# end %>
 <hr>
 <h3>Search Result of Event by Organization</h3>
-<!--@events = Event.where(organization_id: params[:organization_id])-->
-<%# Event.all.each do |event| %>
-<%# event.organizations.each do |organization| %>
-<%#@matchOrganization.ids.each do |id|%>
-<%# if guest.user.id==id and guest.owner == true %>
-<%#= render partial: 'events/event_title', locals: { event: event } %>
-<%#= render partial: 'events/event_title', locals: { event: event } %>
-<%# end %>
-<%# end %>
-<%# end %>
-<%# end %>
+<div class="row">
+  <% @matchOrganization.each do |organization| %>
+
+    <% Event.where(organization_id: organization).each do |event| %>
+      <% a= Guest.where(event_id: event , owner: true)[0].user==@current_user%>
+
+      <%if event.private==false %>
+        <%= render partial: 'events/event_title', locals: { event: event, owner: a , admin: false } %>
+      <%else %>
+        <% event.guests.each do |guest| %>
+          <% if guest.user==@current_user %>
+            <%= render partial: 'events/event_title', locals: { event: event , owner: a , admin: false} %>
+          <% end %>
+        <% end %>
+      <% end %>
+  <% end %>
+  <% end %>
+</div>

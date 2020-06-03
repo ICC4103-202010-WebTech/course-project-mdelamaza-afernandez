@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root "pages#home"
   get '/search' => 'pages#search', :as => 'search_page'
+  get '/admin' => "pages#admin", :as => "admin"
   #Routs API
   namespace :api, defaults: { format: :json } do
     namespace :v1 do

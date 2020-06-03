@@ -1,19 +1,24 @@
 <p id="notice"><%= notice %></p>
 <h3>Users</h3>
-
+<div class="row">
 <% User.all.each do |user| %>
-  <%= render partial: 'users/user_title', locals: { user: user } %>
+  <%= render partial: 'users/user_title', locals: { user: user , owner: false, admin: true} %>
   <%#= link_to user.user_name, user_path(user.id)%>
 <% end %>
+</div>
 <hr>
 <h3>Events</h3>
+<div class="row">
 <% Event.all.each do |event| %>
-  <%= render partial: 'events/event_title', locals: { event: event } %>
+  <%= render partial: 'events/event_title', locals: { event: event, owner: false, admin: true } %>
   <%#= link_to event.name, event_path(event.id)%>
 <% end %>
+</div>
 <hr>
 <h3>Organizations</h3>
+<div class="row">
 <% Organization.all.each do |organization| %>
-  <%= render partial: 'organizations/organization_title', locals: { organization: organization } %>
+  <%= render partial: 'organizations/organization_title', locals: { organization: organization , owner: false, admin: true} %>
   <%#= link_to organization.name, organization_path(organization.id)%>
 <% end %>
+</div>
