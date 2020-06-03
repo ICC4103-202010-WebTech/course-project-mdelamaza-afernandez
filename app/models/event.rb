@@ -15,6 +15,8 @@ class Event < ApplicationRecord
     puts 'Event destroyed'
   end
   has_one_attached :flyer
+  has_one_attached :video
+  has_one_attached :file
   # validates :name, :description,:location,:private, presence: true
   # # validates :voted_date, not_in_past: true
   # validates :organization_id, presence: true

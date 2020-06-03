@@ -59,6 +59,14 @@
 
 <div class="row">
   <%  @events.each do |event| %>
-    <%= render partial: 'events/event_title', locals: { event: event } %>
+    <%if event.private==false %>
+       <%= render partial: 'events/event_title', locals: { event: event } %>
+    <%else %>
+      <% event.guests.each do |guest| %>
+      <% if guest.user==@current_user %>
+        <%= render partial: 'events/event_title', locals: { event: event } %>
+          <% end %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<h3>Users</h3>
+
+<% User.all.each do |user| %>
+  <%= render partial: 'users/user_title', locals: { user: user } %>
+  <%#= link_to user.user_name, user_path(user.id)%>
+<% end %>
+<hr>
+<h3>Events</h3>
+<% Event.all.each do |event| %>
+  <%= render partial: 'events/event_title', locals: { event: event } %>
+  <%#= link_to event.name, event_path(event.id)%>
+<% end %>
+<hr>
+<h3>Organizations</h3>
+<% Organization.all.each do |organization| %>
+  <%= render partial: 'organizations/organization_title', locals: { organization: organization } %>
+  <%#= link_to organization.name, organization_path(organization.id)%>
+<% end %>

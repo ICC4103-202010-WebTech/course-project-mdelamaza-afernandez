@@ -4,8 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    # @events = Event.where(organization_id: params[:organization_id])
-    @events = Event.all
+    @events = Event.where(organization_id: params[:organization_id])
+    # @events = Event.all
   end
 
   # GET /events/1
@@ -69,6 +69,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {}).permit(:id, :name, :description, :location, :voted_date,:flyer,:organization_id,:private)
+      params.fetch(:event, {}).permit(:id, :name, :description, :location, :voted_date,:flyer,:organization_id,:private,:video,:file)
     end
 end
