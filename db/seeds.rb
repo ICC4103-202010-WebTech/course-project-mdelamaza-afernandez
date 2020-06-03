@@ -10,15 +10,20 @@ user4.save!
 ###organization
 organization1= Organization.create(name:"Friends", description:"just a group of friends",creation_date:'2013-02-02 01:00:00' )
 organization2= Organization.create(name:"college", description:"college group",creation_date:'2013-02-02 01:00:00' )
+organization3= Organization.create(name:"mens", description:"group",creation_date:'2013-02-02 01:00:00' )
 organization1.save!
 organization2.save!
+organization3.save!
 ###event
 event1= Event.create(name:"Alvaro Birthday",location:"casa 3",description:"alvaro secret birthday",private:true)
 event2= Event.create(name:"study night",location:"casa 1",description:"noche de estudio donde cami",private:false )
+event3= Event.create(name:"No Cami",location:"casa 4",description:"noche de estudio sin cami",private:false )
 event1.organization_id = organization1.id
 event2.organization_id = organization2.id
+event3.organization_id = organization3.id
 event1.save!
 event2.save!
+event3.save!
 #guest
 guest1 = Guest.create(owner:true)
 guest2 = Guest.create(owner:false )
@@ -26,25 +31,36 @@ guest3 = Guest.create(owner:false )
 guest4 = Guest.create(owner:true)
 guest5 = Guest.create(owner:false )
 guest6 = Guest.create(owner:false )
+guest7 = Guest.create(owner:true)
+guest8 = Guest.create(owner:false )
+guest9 = Guest.create(owner:false )
 guest1.event_id = event1.id
 guest2.event_id = event1.id
 guest3.event_id = event1.id
 guest4.event_id = event2.id
 guest5.event_id  =event2.id
 guest6.event_id = event2.id
+guest7.event_id = event3.id
+guest8.event_id = event3.id
+guest9.event_id = event3.id
 guest1.user_id = user3.id
 guest2.user_id = user1.id
 guest3.user_id = user4.id
 guest4.user_id = user1.id
 guest5.user_id = user2.id
 guest6.user_id = user3.id
+guest7.user_id = user2.id
+guest8.user_id = user3.id
+guest9.user_id = user4.id
 guest1.save!
 guest2.save!
 guest3.save!
 guest4.save!
 guest5.save!
 guest6.save!
-
+guest7.save!
+guest8.save!
+guest9.save!
 
 #membership
 membership1 = Membership.create(owner: true , date:'2013-02-02 01:00:00' )
@@ -75,6 +91,19 @@ membership4.save!
 membership5.save!
 membership6.save!
 membership7.save!
+#mas
+membership8 = Membership.create(owner: true , date:'2013-02-02 01:00:00' )
+membership9 = Membership.create(owner: false , date:'2014-02-02 01:00:00' )
+membership10 = Membership.create(owner: false , date:'2014-02-02 01:00:00' )
+membership8.organization_id = organization3.id
+membership9.organization_id = organization3.id
+membership10.organization_id = organization3.id
+membership8.user_id = user2.id
+membership9.user_id = user3.id
+membership10.user_id = user4.id
+membership8.save!
+membership9.save!
+membership10.save!
 #comment
 comment1 = Comment.create(msg:"msg 1")
 comment2 = Comment.create(msg:"msg 2")

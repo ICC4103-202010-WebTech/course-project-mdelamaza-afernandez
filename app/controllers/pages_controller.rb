@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   end
   def search
     if params[:search].blank?
-      puts ("Empty Search")
+      flash[:notice] = "Empty Search"
       redirect_back(fallback_location: root_path)
     else
       puts("Search has been succesfull")

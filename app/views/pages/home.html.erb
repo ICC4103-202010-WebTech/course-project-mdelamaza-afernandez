@@ -1,4 +1,4 @@
-
+<p id="notice"><%= notice %></p>
 <div class="row ml-0 mt-3">
   <h2>Upcoming Events</h2>
 </div>
@@ -7,6 +7,11 @@
 </div>
 <div class="row">
   <% @events.each do |event| %>
-    <%= render partial: 'events/event_title', locals: { event: event } %>
+    <% event.guests.each do |guest| %>
+      <% if guest.user==@current_user %>
+         <%= render partial: 'events/event_title', locals: { event: event } %>
+      <%#= render partial: 'events/event_title', locals: { event: event } %>
+    <% end %>
+  <% end %>
   <% end %>
 </div>
