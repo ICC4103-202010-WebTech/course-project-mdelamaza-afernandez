@@ -4,8 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where(organization_id: params[:organization_id])
-    # @events = Event.all
+     # @events = Event.where(organization_id: params[:organization_id])
+     @events = Event.all
   end
 
   # GET /events/1
@@ -28,9 +28,11 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        flash[:notice] = "Event Has Been Created!"
+        format.html { redirect_to @event}#, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
+        flash[:alert] = "Uups! An error ocurred. Try again later"
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
@@ -42,9 +44,11 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        flash[:notice] = "Event Has Been Updated!"
+        format.html { redirect_to @event}#, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
+        flash[:alert] = "Uups! An error ocurred. Try again later"
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
@@ -56,7 +60,8 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      flash[:notice] = "Event Has Been Destroyed!"
+      format.html { redirect_to events_url}#, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +74,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {}).permit(:id, :name, :description, :location, :voted_date,:flyer,:organization_id,:private,:video,:file)
+      params.fetch(:event, {}).permit(:id, :name, :description, :location, :voted_date,:flyer,:organization_id,:private)
     end
 end

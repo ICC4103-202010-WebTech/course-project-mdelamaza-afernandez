@@ -29,9 +29,11 @@ class DateOptionsController < ApplicationController
 
     respond_to do |format|
       if @date_option.save
-        format.html { redirect_to @date_option, notice: 'Date option was successfully created.' }
+        flash[:notice] = "Date Option Has Been Created!"
+        format.html { redirect_to @date_option}#, notice: 'Date option was successfully created.' }
         format.json { render :show, status: :created, location: @date_option }
       else
+        flash[:alert] = "Uups! An error ocurred. Try again later"
         format.html { render :new }
         format.json { render json: @date_option.errors, status: :unprocessable_entity }
       end
@@ -43,9 +45,11 @@ class DateOptionsController < ApplicationController
   def update
     respond_to do |format|
       if @date_option.update(date_option_params)
-        format.html { redirect_to @date_option, notice: 'Date option was successfully updated.' }
+        flash[:notice] = "Date Option Has Been Updated!"
+        format.html { redirect_to @date_option}#, notice: 'Date option was successfully updated.' }
         format.json { render :show, status: :ok, location: @date_option }
       else
+        flash[:alert] = "Uups! An error ocurred. Try again later"
         format.html { render :edit }
         format.json { render json: @date_option.errors, status: :unprocessable_entity }
       end
@@ -57,7 +61,8 @@ class DateOptionsController < ApplicationController
   def destroy
     @date_option.destroy
     respond_to do |format|
-      format.html { redirect_to date_options_url, notice: 'Date option was successfully destroyed.' }
+      flash[:notice] = "Date Option Has Been Destroyed!"
+      format.html { redirect_to date_options_url}#, notice: 'Date option was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

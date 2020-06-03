@@ -30,9 +30,11 @@ class GuestsController < ApplicationController
 
     respond_to do |format|
       if @guest.save
+        flash[:notice] = "Guest Has Been Created!"
         format.html { redirect_to @guest, notice: 'Guest was successfully created.' }
         format.json { render :show, status: :created, location: @guest }
       else
+        flash[:alert] = "Uups! An error ocurred. Try again later"
         format.html { render :new }
         format.json { render json: @guest.errors, status: :unprocessable_entity }
       end
@@ -44,9 +46,11 @@ class GuestsController < ApplicationController
   def update
     respond_to do |format|
       if @guest.update(guest_params)
-        format.html { redirect_to @guest, notice: 'Guest was successfully updated.' }
+        flash[:notice] = "Guest Has Been Updated!"
+        format.html { redirect_to @guest}#, notice: 'Guest was successfully updated.' }
         format.json { render :show, status: :ok, location: @guest }
       else
+        flash[:alert] = "Uups! An error ocurred. Try again later"
         format.html { render :edit }
         format.json { render json: @guest.errors, status: :unprocessable_entity }
       end
@@ -58,7 +62,8 @@ class GuestsController < ApplicationController
   def destroy
     @guest.destroy
     respond_to do |format|
-      format.html { redirect_to guests_url, notice: 'Guest was successfully destroyed.' }
+      flash[:notice] = "Guest Has Been Destroyed!"
+      format.html { redirect_to guests_url}#, notice: 'Guest was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

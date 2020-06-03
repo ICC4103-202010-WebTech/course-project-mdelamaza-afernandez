@@ -24,6 +24,7 @@
 
 <p id="notice"><%= notice %></p>
 <h1>Your Created Events</h1>
+<button type="button" class="btn btn-outline-secondary"><%= link_to 'New Event', new_event_path%></button>
 <div class="row">
   <% @guests.each do |guest| %>
     <% if guest.owner==true %>
@@ -33,8 +34,8 @@
 </div>
 <h1>All Your Events</h1>
 <div class="row">
-  <% a= guest.user==@current_user %>
   <% @guests.each do |guest| %>
+    <% a= (guest.user==@current_user and guest.owner) %>
     <%= render partial: 'events/event_title', locals: { event: guest.event, owner: a , admin: false } %>
   <% end %>
 </div>

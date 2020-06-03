@@ -29,9 +29,11 @@ class MailBoxesController < ApplicationController
 
     respond_to do |format|
       if @mail_box.save
-        format.html { redirect_to @mail_box, notice: 'Mail box was successfully created.' }
+        flash[:notice] = "Mail box was successfully created"
+        format.html { redirect_to @mail_box}#, notice: 'Mail box was successfully created.' }
         format.json { render :show, status: :created, location: @mail_box }
       else
+        flash[:alert] = "Uups! An error ocurred. Try again later"
         format.html { render :new }
         format.json { render json: @mail_box.errors, status: :unprocessable_entity }
       end
@@ -43,9 +45,11 @@ class MailBoxesController < ApplicationController
   def update
     respond_to do |format|
       if @mail_box.update(mail_box_params)
-        format.html { redirect_to @mail_box, notice: 'Mail box was successfully updated.' }
+        flash[:notice] = "Mail box was successfully updated."
+        format.html { redirect_to @mail_box}#, notice: 'Mail box was successfully updated.' }
         format.json { render :show, status: :ok, location: @mail_box }
       else
+        flash[:alert] = "Uups! An error ocurred. Try again later"
         format.html { render :edit }
         format.json { render json: @mail_box.errors, status: :unprocessable_entity }
       end
@@ -57,7 +61,8 @@ class MailBoxesController < ApplicationController
   def destroy
     @mail_box.destroy
     respond_to do |format|
-      format.html { redirect_to mail_boxes_url, notice: 'Mail box was successfully destroyed.' }
+      flash[:notice] = "Mail box was successfully destroyed."
+      format.html { redirect_to mail_boxes_url}#, notice: 'Mail box was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

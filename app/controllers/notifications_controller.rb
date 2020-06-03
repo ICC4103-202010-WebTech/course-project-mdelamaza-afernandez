@@ -29,9 +29,11 @@ class NotificationsController < ApplicationController
 
     respond_to do |format|
       if @notification.save
+        flash[:notice] = "Notification was successfully created."
         format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
         format.json { render :show, status: :created, location: @notification }
       else
+        flash[:alert] = "Uups! An error ocurred. Try again later"
         format.html { render :new }
         format.json { render json: @notification.errors, status: :unprocessable_entity }
       end
@@ -43,9 +45,11 @@ class NotificationsController < ApplicationController
   def update
     respond_to do |format|
       if @notification.update(notification_params)
-        format.html { redirect_to @notification, notice: 'Notification was successfully updated.' }
+        flash[:notice] = "Notification was successfully updated."
+        format.html { redirect_to @notification}#, notice: 'Notification was successfully updated.' }
         format.json { render :show, status: :ok, location: @notification }
       else
+        flash[:alert] = "Uups! An error ocurred. Try again later"
         format.html { render :edit }
         format.json { render json: @notification.errors, status: :unprocessable_entity }
       end
@@ -57,7 +61,8 @@ class NotificationsController < ApplicationController
   def destroy
     @notification.destroy
     respond_to do |format|
-      format.html { redirect_to notifications_url, notice: 'Notification was successfully destroyed.' }
+      flash[:notice] = "Notification was successfully destroyed."
+      format.html { redirect_to notifications_url}#, notice: 'Notification was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

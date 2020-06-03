@@ -28,9 +28,11 @@ class MultimediaController < ApplicationController
 
     respond_to do |format|
       if @multimedium.save
-        format.html { redirect_to @multimedium, notice: 'Multimedium was successfully created.' }
+        flash[:notice] = "Multimedium was successfully created."
+        format.html { redirect_to @multimedium}#, notice: 'Multimedium was successfully created.' }
         format.json { render :show, status: :created, location: @multimedium }
       else
+        flash[:alert] = "Uups! An error ocurred. Try again later"
         format.html { render :new }
         format.json { render json: @multimedium.errors, status: :unprocessable_entity }
       end
@@ -42,9 +44,11 @@ class MultimediaController < ApplicationController
   def update
     respond_to do |format|
       if @multimedium.update(multimedium_params)
-        format.html { redirect_to @multimedium, notice: 'Multimedium was successfully updated.' }
+        flash[:notice] = "Multimedium was successfully updated."
+        format.html { redirect_to @multimedium}#, notice: 'Multimedium was successfully updated.' }
         format.json { render :show, status: :ok, location: @multimedium }
       else
+        flash[:alert] = "Uups! An error ocurred. Try again later"
         format.html { render :edit }
         format.json { render json: @multimedium.errors, status: :unprocessable_entity }
       end
@@ -56,7 +60,8 @@ class MultimediaController < ApplicationController
   def destroy
     @multimedium.destroy
     respond_to do |format|
-      format.html { redirect_to multimedia_url, notice: 'Multimedium was successfully destroyed.' }
+      flash[:notice] = "Multimedium was successfully destroyed."
+      format.html { redirect_to multimedia_url}#, notice: 'Multimedium was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
