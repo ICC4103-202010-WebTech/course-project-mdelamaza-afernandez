@@ -173,34 +173,34 @@ notification6.event_id=event2.id
 notification4.save!
 notification5.save!
 notification6.save!
-#votes
+#votesra
 # 1
-vote1 = Vote.create()
-vote2 = Vote.create()
-vote1.date_option_id = date1.id
-vote2.date_option_id = date2.id
-vote1.user_id = user1.id
-vote2.user_id = user3.id
-vote1.save!
-vote2.save!
+# vote1 = Vote.create()
+# vote2 = Vote.create()
+# vote1.date_option_id = date1.id
+# vote2.date_option_id = date2.id
+# vote1.user_id = user1.id
+# vote2.user_id = user3.id
+# vote1.save!
+# vote2.save!
 #2
-vote3 = Vote.create()
-vote4 = Vote.create()
-vote3.date_option_id = date4.id
-vote4.date_option_id = date8.id
-vote3.user_id = user4.id
-vote4.user_id = user1.id
-vote3.save!
-vote4.save!
-#3
-vote5 = Vote.create()
-vote6 = Vote.create()
-vote5.date_option_id = date7.id
-vote6.date_option_id = date6.id
-vote5.user_id = user2.id
-vote6.user_id = user3.id
-vote5.save!
-vote6.save!
+# vote3 = Vote.create()
+# vote4 = Vote.create()
+# vote3.date_option_id = date4.id
+# vote4.date_option_id = date8.id
+# vote3.user_id = user4.id
+# vote4.user_id = user1.id
+# vote3.save!
+# vote4.save!
+# #3
+# vote5 = Vote.create()
+# vote6 = Vote.create()
+# vote5.date_option_id = date7.id
+# vote6.date_option_id = date6.id
+# vote5.user_id = user2.id
+# vote6.user_id = user3.id
+# vote5.save!
+# vote6.save!
 #mail box
 # 1
 mail_box1 = MailBox.create(inbox: "msg 1")

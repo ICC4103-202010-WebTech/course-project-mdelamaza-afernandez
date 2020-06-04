@@ -34,9 +34,16 @@
   </tbody>
 </table>
 <div class="btn-group">
-<button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_event_path(@event) %></button>
-<button type="button" class="btn btn-outline-secondary"><%= link_to "Report", controller: "reports", action: "show", event_id: @event %></button>
-<button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
+  <% begin %>
+      <% if Guest.where(event_id: @event , owner: true)[0].user==@current_user %>
+        <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_event_path(@event) %></button>
+        <button type="button" class="btn btn-outline-secondary"><%= link_to 'Delete', { controller: "events", action: "destroy",event: @event }, method: :delete, class: ["btn", "btn-primary"] %></button>
+      <% end  %>
+  <%rescue %>
+  <%end %>
+
+  <button type="button" class="btn btn-outline-secondary"><%= link_to "Report", controller: "reports", action: "show", event_id: @event %></button>
+  <button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
 </div>
 
 <!--t.boolean "private"-->

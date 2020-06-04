@@ -12,8 +12,11 @@
       <td><%= date_option.date %></td>
     </tr>
   <% end %>
+  <button type="button" class="btn btn-outline-secondary"><%= link_to 'Home', root_path %></button>
   </tbody>
 
 </table>
+
 <!--<button type="button" class="btn btn-outline-secondary"><%#= link_to 'Edit', edit_date_option_path(@date_option) %></button> |-->
-<button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
+<button type="button" class="btn btn-outline-secondary">
+  <%= link_to 'New Date Option', new_event_date_option_path(@date_option[0].event_id) %></button>

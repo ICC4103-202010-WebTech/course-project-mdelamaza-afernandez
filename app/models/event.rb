@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   has_many :guests, dependent: :destroy
   has_many :users, through: :guests
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
   has_many :users, through: :notifications
   has_many :comments, dependent: :destroy
   has_many :users, through: :comments

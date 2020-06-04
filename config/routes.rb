@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :events
+  resources :date_options
   #
   resources :guests
   resources :memberships
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
 
     resources :events, shallow: true do
       resources :guests, shallow: true
+      resources :date_options, shallow: true
       resources :reports, shallow: true #reporte del evento
 
       resources :comments, shallow: true do
@@ -38,9 +40,7 @@ Rails.application.routes.draw do
       resources :memberships, shallow: true
     end
 
-    resources :date_options, shallow: true do
-      resources :votes
-    end
+
 
   end
 

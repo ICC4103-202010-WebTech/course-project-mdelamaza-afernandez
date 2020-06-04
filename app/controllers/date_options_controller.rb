@@ -1,5 +1,5 @@
 class DateOptionsController < ApplicationController
-  before_action :set_date_option, only: [:show, :edit, :update, :destroy]
+  before_action :set_date_option, only: [:show, :edit, :update, :destroy, :upvote,:downvote]
 
   # GET /date_options
   # GET /date_options.json
@@ -15,6 +15,7 @@ class DateOptionsController < ApplicationController
 
   # GET /date_options/new
   def new
+    @event = params[:event_id]
     @date_option = DateOption.new
   end
 
@@ -30,7 +31,7 @@ class DateOptionsController < ApplicationController
     respond_to do |format|
       if @date_option.save
         flash[:notice] = "Date Option Has Been Created!"
-        format.html { redirect_to @date_option}#, notice: 'Date option was successfully created.' }
+        format.html { redirect_back(fallback_location: root_path) }#, notice: 'Date option was successfully created.' }
         format.json { render :show, status: :created, location: @date_option }
       else
         flash[:alert] = "Uups! An error ocurred. Try again later"
@@ -62,9 +63,17 @@ class DateOptionsController < ApplicationController
     @date_option.destroy
     respond_to do |format|
       flash[:notice] = "Date Option Has Been Destroyed!"
-      format.html { redirect_to date_options_url}#, notice: 'Date option was successfully destroyed.' }
+      format.html { redirect_to root_path}#, notice: 'Date option was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  def upvote
+    @date_option.upvote_from @current_user
+    redirect_to event_path
+  end
+  def downvote
+    @date_option.downvote_from @current_user
+    redirect_to event_path
   end
 
   private
@@ -75,6 +84,7 @@ class DateOptionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def date_option_params
-      params.fetch(:date_option, {})
+      params.fetch(:date_option, {}).permit(:event_id, :date)
     end
+
 end

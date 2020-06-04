@@ -1,39 +1,6 @@
-<!--<p id="notice"><%#= notice %></p>-->
-
-<%# @guest.each do |guest|%>
-
-<%#= guest.user_id %>
-
-    <%#= guest.user_id %>
-
-<%# end %>
-
-
-<!--<%#= link_to 'Edit', edit_guest_path(@guest) %> |-->
-<%#= link_to 'Back', guests_path %>
-
-<!--<table class="table table-hover">-->
-<!--  <thead>-->
-<!--  <th>N</th>-->
-<!--  <th>User_Id</th>-->
-<!--  <th>User_Name</th>-->
-
-<!--  </thead>-->
-<!--  <tbody>-->
-  <%# @guest.each_with_index do |guest, i| %>
-<!--    <tr>-->
-<!--      <td><%#= i+1 %></td>-->
-<!--      <td><%#= guest.user_id %></td>-->
-<!--      <td><%#= link_to guest.user.user_name, controller: "users", action: "show", id: guest.user %></td>-->
-<!--    </tr>-->
-  <%# end %>
-<!--  <td><button type="button" class="btn btn-outline-secondary"><%#= link_to 'home', root_path %></button></td>-->
-<!--  </tbody>-->
-<!--  <button type="button" class="btn btn-outline-secondary"><%#= link_to 'Edit', edit_date_option_path(@date_option) %></button> |-->
-<!--</table>-->
-
-
-
+<button type="button" class="btn btn-outline-secondary">
+  <%= link_to 'New Guest', new_event_guest_path(@guest[0].event_id) %>
+</button>
 <div class="row">
   <% @guest.each do |guest| %>
     <%= render partial: 'users/user_title', locals: { user: guest.user , admin: false } %>

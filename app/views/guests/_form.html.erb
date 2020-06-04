@@ -1,17 +1,21 @@
-<%= form_with(model: guest, local: true) do |form| %>
-  <% if guest.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(guest.errors.count, "error") %> prohibited this guest from being saved:</h2>
+<div class="row ml-0">
+  <%= form_with model: guest, local: true do |form| %>
 
-      <ul>
-        <% guest.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <!--    <div class="form-group">-->
+    <%#= form.label "image" %>
+    <%#= form.file_field :flyer %>
+    <!--    </div>-->
+    <div class="form-group">
+      <%= form.label :user_id %>
+      <%= form.collection_select :user_id, User.order(:user_name),:id,:user_name  %>
+    </div>
+    <div class="form-group">
+      <%= form.label :event_id %>
+      <%= form.collection_select :event_id , Event.where(id: event),:id,:name %>
+    </div>
+    <div class="form-group mt-2">
+      <%= form.submit "Invite", class: ["btn", "btn-primary"] %>
+      <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

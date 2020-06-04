@@ -16,6 +16,8 @@ class GuestsController < ApplicationController
 
   # GET /guests/new
   def new
+
+    @event = params[:event_id]
     @guest = Guest.new
   end
 
@@ -27,11 +29,13 @@ class GuestsController < ApplicationController
   # POST /guests.json
   def create
     @guest = Guest.new(guest_params)
-
+    # @event = Event.where(id: params[:event_id])
+    # puts ("chaooooooooooooooooooooooooo")
+    # puts(params[:id])
     respond_to do |format|
-      if @guest.save
+      if @guest.save!
         flash[:notice] = "Guest Has Been Created!"
-        format.html { redirect_to @guest, notice: 'Guest was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Guest was successfully created.' }
         format.json { render :show, status: :created, location: @guest }
       else
         flash[:alert] = "Uups! An error ocurred. Try again later"
@@ -69,13 +73,14 @@ class GuestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_guest
-      @guest = Guest.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_guest
+    @guest = Guest.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def guest_params
-      params.fetch(:guest, {})
-    end
+
+  # Only allow a list of trusted parameters through.
+  def guest_params
+    params.fetch(:guest, {}).permit(:user_id,:event_id,:owner)
+  end
 end

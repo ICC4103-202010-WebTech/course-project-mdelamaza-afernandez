@@ -15,6 +15,7 @@ class MembershipsController < ApplicationController
 
   # GET /memberships/new
   def new
+    @organization = params[:organization_id]
     @membership = Membership.new
   end
 
@@ -28,9 +29,9 @@ class MembershipsController < ApplicationController
     @membership = Membership.new(membership_params)
 
     respond_to do |format|
-      if @membership.save
+      if @membership.save!
         flash[:notice] = "Membership was successfully created."
-        format.html { redirect_to @membership}#, notice: 'Membership was successfully created.' }
+        format.html { redirect_to root_path}#, notice: 'Membership was successfully created.' }
         format.json { render :show, status: :created, location: @membership }
       else
         flash[:alert] = "Uups! An error ocurred. Try again later"
@@ -68,13 +69,13 @@ class MembershipsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_membership
-      @membership = Membership.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_membership
+    @membership = Membership.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def membership_params
-      params.fetch(:membership, {})
-    end
+  # Only allow a list of trusted parameters through.
+  def membership_params
+    params.fetch(:membership, {}).permit(:user_id,:organization_id,:owner)
+  end
 end
