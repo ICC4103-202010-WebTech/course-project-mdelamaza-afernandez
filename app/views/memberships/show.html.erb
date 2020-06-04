@@ -22,7 +22,6 @@
 
 <div class="row">
   <% @membership.each do |membership| %>
-    <% a= membership.user==@current_user %>
-    <%= render partial: 'users/user_title', locals: { user: membership.user, owner: a , admin: false } %>
+    <%= render partial: 'users/user_title', locals: { user: membership.user, admin: false } %>
   <% end %>
 </div>

@@ -28,15 +28,14 @@
 <div class="row">
   <% @guests.each do |guest| %>
     <% if guest.owner==true %>
-      <%= render partial: 'events/event_title', locals: { event: guest.event , owner: true , admin: false} %>
+      <%= render partial: 'events/event_title', locals: { event: guest.event , admin: false} %>
     <% end %>
   <% end %>
 </div>
 <h1>All Your Events</h1>
 <div class="row">
   <% @guests.each do |guest| %>
-    <% a= (guest.user==@current_user and guest.owner) %>
-    <%= render partial: 'events/event_title', locals: { event: guest.event, owner: a , admin: false } %>
+    <%= render partial: 'events/event_title', locals: { event: guest.event, admin: false } %>
   <% end %>
 </div>
 

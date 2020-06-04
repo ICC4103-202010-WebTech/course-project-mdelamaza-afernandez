@@ -7,10 +7,9 @@
 </div>
 <div class="row">
   <% @events.each do |event| %>
-    <% a=Guest.where(event_id: event , owner: true)[0].user==@current_user%>
     <% event.guests.each do |guest| %>
       <% if guest.user==@current_user %>
-         <%= render partial: 'events/event_title', locals: { event: event , owner: a , admin: false} %>
+         <%= render partial: 'events/event_title', locals: { event: event  , admin: false} %>
       <%#= render partial: 'events/event_title', locals: { event: event } %>
     <% end %>
   <% end %>
