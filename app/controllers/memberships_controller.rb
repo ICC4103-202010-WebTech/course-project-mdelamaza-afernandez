@@ -31,7 +31,7 @@ class MembershipsController < ApplicationController
     respond_to do |format|
       if @membership.save!
         flash[:notice] = "Membership was successfully created."
-        format.html { redirect_to root_path}#, notice: 'Membership was successfully created.' }
+        format.html { redirect_to Organization.where(id: @membership.organization_id).first}#, notice: 'Membership was successfully created.' }
         format.json { render :show, status: :created, location: @membership }
       else
         flash[:alert] = "Uups! An error ocurred. Try again later"

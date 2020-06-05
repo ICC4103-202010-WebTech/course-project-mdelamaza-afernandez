@@ -4,8 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-     # @events = Event.where(organization_id: params[:organization_id])
-     @events = Event.all
+     @events = Event.where(organization_id: params[:organization_id])
+     # @events = Event.all
   end
 
   # GET /events/1

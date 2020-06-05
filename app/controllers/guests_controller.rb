@@ -35,7 +35,7 @@ class GuestsController < ApplicationController
     respond_to do |format|
       if @guest.save!
         flash[:notice] = "Guest Has Been Created!"
-        format.html { redirect_to root_path, notice: 'Guest was successfully created.' }
+        format.html { redirect_to Event.where(id: @guest.event_id).first, notice: 'Guest was successfully created.' }
         format.json { render :show, status: :created, location: @guest }
       else
         flash[:alert] = "Uups! An error ocurred. Try again later"
