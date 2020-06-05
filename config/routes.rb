@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
+  resources :date_options do
+    member do
+      put "like" => "date_options#upvote"
+    end
+  end
   root "pages#home"
   get '/search' => 'pages#search', :as => 'search_page'
   get '/admin' => "pages#admin", :as => "admin"
@@ -13,7 +17,7 @@ Rails.application.routes.draw do
       end
     end
   end
-
+  resources :comments
   resources :events
   resources :date_options
   #
@@ -39,9 +43,6 @@ Rails.application.routes.draw do
     resources :organizations, shallow: true do
       resources :memberships, shallow: true
     end
-
-
-
   end
 
 

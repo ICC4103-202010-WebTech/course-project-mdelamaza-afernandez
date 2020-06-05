@@ -68,12 +68,18 @@ class DateOptionsController < ApplicationController
     end
   end
   def upvote
-    @date_option.upvote_from @current_user
-    redirect_to event_path
+    @date_option.upvote_from (@current_user)
+    redirect_back(fallback_location: root_path)
   end
   def downvote
-    @date_option.downvote_from @current_user
+    @date_option.downvote_from (@current_user)
     redirect_to event_path
+  end
+  def mostrar
+    b = true
+  end
+  def esconder
+    b = false
   end
 
   private

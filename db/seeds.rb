@@ -119,33 +119,33 @@ comment2.save!
 comment3.save!
 #date option
 # 1
-date1 = DateOption.create(date:'2019-05-02 01:00:00')
-date2 = DateOption.create(date:'2019-05-03 01:00:00')
+date1 = DateOption.create(date: DateTime.now.to_date)
+# date2 = DateOption.create(date:'2019-05-03 01:00:00')
 date1.event_id = event1.id
-date2.event_id = event1.id
+# date2.event_id = event1.id
 date1.save!
-date2.save!
+# date2.save!
 #2
-date3 = DateOption.create(date:'2019-05-04 01:00:00')
-date4 = DateOption.create(date:'2019-05-05 01:00:00')
-date3.event_id = event1.id
-date4.event_id = event1.id
-date3.save!
-date4.save!
+# date3 = DateOption.create(date:'2019-05-04 01:00:00')
+# date4 = DateOption.create(date:'2019-05-05 01:00:00')
+# date3.event_id = event1.id
+# date4.event_id = event1.id
+# date3.save!
+# date4.save!
 #3
-date5 = DateOption.create(date:'2019-05-10 01:00:00')
-date6 = DateOption.create(date:'2019-05-11 01:00:00')
+date5 = DateOption.create(date:DateTime.now.to_date)
+# date6 = DateOption.create(date:'2019-05-11 01:00:00')
 date5.event_id = event2.id
-date6.event_id = event2.id
+# date6.event_id = event2.id
 date5.save!
-date6.save!
+# date6.save!
 #4
-date7 = DateOption.create(date:'2019-05-12 01:00:00')
-date8 = DateOption.create(date:'2019-05-13 01:00:00')
-date7.event_id = event2.id
-date8.event_id = event2.id
+date7 = DateOption.create(date:DateTime.now.to_date)
+# date8 = DateOption.create(date:'2019-05-13 01:00:00')
+date7.event_id = event3.id
+# date8.event_id = event2.id
 date7.save!
-date8.save!
+# date8.save!
 #notification
 # uno
 notification1=Notification.create(msg:"notificacion 1")

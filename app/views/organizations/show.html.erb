@@ -26,8 +26,8 @@
 </table>
 <div class="btn-group">
   <% if Membership.where(organization_id: @organization , owner: true)[0].user==@current_user %>
-    <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_organization_path(@organization) %></button>
-  <% end %>
-  <button type="button" class="btn btn-outline-secondary"><%= link_to "Report", controller: "reports", action: "show", organization_id: @organization %></button>
-  <button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
+<button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_organization_path(@organization) %></button>
+    <% end %>
+<button type="button" class="btn btn-outline-secondary"><%= link_to "Report", controller: "reports", action: "show", organization_id: @organization %></button>
+<button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
 </div>

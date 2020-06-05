@@ -1,19 +1,41 @@
 <p id="notice"><%= notice %></p>
 <table class="table table-hover">
+  <%# @b = false %>
   <thead>
   <th>N</th>
   <th>Date</th>
+  <th>Vote</th>
+<!--  <th><%#=link_to "Start Vote",{controller: "date_option", action: "mostar"}, class: ["btn", "btn-primary"] %></th>-->
 
   </thead>
-  <tbody>
-  <% @date_option.each_with_index do |date_option, i| %>
-    <tr>
-      <td><%= i+1 %></td>
-      <td><%= date_option.date %></td>
-    </tr>
-  <% end %>
-  <button type="button" class="btn btn-outline-secondary"><%= link_to 'Home', root_path %></button>
-  </tbody>
+  <%begin %>
+    <%# b = false %>
+    <tbody>
+
+    <% @date_option.each_with_index do |date_option, i| %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= date_option.date %></td>
+
+        <%#if @b %>
+          <td>
+            <%=link_to like_date_option_path(date_option), class: "like", method: :put do%>
+              <button type = "button" class = "btn btn-info" aria-label = "Left Align" >
+                <span class = "glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+                <span class="badge"><%=date_option.get_upvotes.size %></span>
+              </button>
+            <%end %>
+          </td>
+        <%#end %>
+<!--          <%#= link_to 'New Date Option', new_event_date_option_path(@date_option[0].event_id) %></button>-->
+
+
+      </tr>
+    <% end %>
+<!--    <button type="button" class="btn btn-outline-secondary"><%#= link_to 'Home', root_path %></button>-->
+    </tbody>
+  <%rescue %>
+  <%end %>
 
 </table>
 

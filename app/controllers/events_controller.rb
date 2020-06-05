@@ -29,6 +29,10 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         flash[:notice] = "Event Has Been Created!"
+        @guest = Guest.create(owner:true,event_id:@event.id,user_id:@current_user.id)
+        @guest.save
+        @fecha = DateOption.create(date: DateTime.now.to_date, event_id: @event.id )
+        @fecha.save
         format.html { redirect_to @event}#, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
