@@ -79,6 +79,16 @@
       <!--    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
       <a class="nav-link" href="<%= admin_path%>">Admin</a>
     </ul>
+    <%if user_signed_in? %>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <button type="button" class="btn btn-dark navbar-btn">Log Out</button>
+      <%end %>
+    <%else %>
+      <%=link_to new_user_session_path do %>
+        <button type="button" class="btn btn-dark navbar-btn">Sign in</button>
+      <%end %>
+    <%end %>
+
 </nav>
 </div>
 

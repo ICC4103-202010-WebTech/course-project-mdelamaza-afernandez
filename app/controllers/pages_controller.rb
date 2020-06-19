@@ -1,6 +1,11 @@
 class PagesController < ApplicationController
   def home
-    @events = Event.all
+    if user_signed_in?
+      @events = Event.all
+    else
+      redirect_to new_user_session_path
+    end
+
   end
   def search
     if params[:search].blank?
