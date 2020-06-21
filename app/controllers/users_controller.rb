@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    #@user = current_user
     #@users = User.find(params[:id])
     # @user = User.where(id: params[:id])
   end
@@ -47,7 +48,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         flash[:notice] = "User was successfully created."
-        format.html { redirect_to @user}#, notice: 'User was successfully updated.' }
+        format.html { redirect_to root_path}#, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         flash[:alert] = "Uups! An error ocurred. Try again later"
