@@ -61,7 +61,42 @@
     </tbody>
 </table>
 <hr>
-<!--Comentarios-->
+<h1>Comments</h1>
+<table class="table table-hover">
+  <thead>
+  <th>N</th>
+  <th>User name</th>
+  <th>Comment</th>
+  <th>Edit</th>
+  <th>
+    <button type="button" class="btn btn-outline-secondary">
+    <%= link_to "Add Comment", new_event_comment_path(@event.id) %>
+    </button>
+  </th>
+  </thead>
+  <tbody>
+  <% @comment.each_with_index do |comment, i| %>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= link_to comment.user.user_name, controller: "users", action: "show", id: comment.user %></td>
+      <td><%= comment.msg %></td>
+      <% if comment.user==current_user %>
+        <td>
+          <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "Edit", edit_comment_path(comment) %>
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-outline-secondary">
+          <%= link_to 'Delete', { controller: "comments", action: "destroy",comment: comment }, method: :delete%>
+          </button>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>
 <hr>
 <!--Multimedia-->
 <hr>

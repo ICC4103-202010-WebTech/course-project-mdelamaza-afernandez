@@ -32,7 +32,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         flash[:notice] = "Event Has Been Created!"
-        @guest = Guest.create(owner:true,event_id:@event.id,user_id:@current_user.id)
+        @guest = Guest.create(owner:true,event_id:@event.id,user_id: current_user.id)
         @guest.save
         @fecha = DateOption.create(date: DateTime.now.to_date, event_id: @event.id )
         @fecha.save

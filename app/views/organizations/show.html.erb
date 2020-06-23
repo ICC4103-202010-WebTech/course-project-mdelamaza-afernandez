@@ -24,6 +24,37 @@
   </tr>
   </tbody>
 </table>
+<hr>
+<h1>Members</h1>
+<div class="row">
+  <% @membership.each do |membership| %>
+    <%= render partial: 'users/user_title', locals: { user: membership.user, admin: false } %>
+  <% end %>
+</div>
+<hr>
+<h1>Public Events</h1>
+<div class="row">
+  <%  @events.each do |event| %>
+    <%if event.private==false %>
+      <%= render partial: 'events/event_title', locals: { event: event, admin: false } %>
+    <% end %>
+  <% end %>
+</div>
+<hr>
+<h1>Invited Events</h1>
+<div class="row">
+  <%  @events.each do |event| %>
+      <% event.guests.each do |guest| %>
+    <% if guest.user==current_user %>
+      <%= render partial: 'events/event_title', locals: { event: event, admin: false } %>
+        <% end %>
+    <% end %>
+  <% end %>
+</div>
+<hr>
+<!--Multimedia-->
+<hr>
+
 <div class="btn-group">
   <% if Membership.where(organization_id: @organization , owner: true)[0].user==@current_user %>
     <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_organization_path(@organization) %></button>
