@@ -28,12 +28,37 @@
 
   </tbody>
 </table>
+<hr>
+<h1><%=@user.user_name %> Create Events</h1>
+<div class="row">
+  <% @guests.each do |guest| %>
+    <% if guest.owner==true %>
+      <%= render partial: 'events/event_title', locals: { event: guest.event , admin: false} %>
+    <% end %>
+  <% end %>
+</div>
+<hr>
+<h1>All <%=@user.user_name %> Events</h1>
+<div class="row">
+  <% @guests.each do |guest| %>
+    <%= render partial: 'events/event_title', locals: { event: guest.event, admin: false } %>
+  <% end %>
+</div>
+<hr>
+<h1><%=@user.user_name %> Organizations</h1>
+<div class="row">
+  <% @memberships.each do |membership| %>
+    <%= render partial: 'organizations/organization_title', locals: { organization: membership.organization , admin: false } %>
+  <% end %>
+</div>
+<hr>
 <div class="btn-group">
   <% if @user.id==1%>
     <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_user_path(@user) %></button>
   <%end %>
   <button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
 </div>
+
 <div class="btn-group">
   <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Event', new_event_path%></button>
   <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Organization', new_organization_path %></button>

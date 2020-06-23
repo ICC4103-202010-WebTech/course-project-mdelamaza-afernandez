@@ -33,6 +33,40 @@
 
   </tbody>
 </table>
+<hr>
+<h1>Guests</h1>
+<div class="row">
+  <% @guest.each do |guest| %>
+    <%= render partial: 'users/user_title', locals: { user: guest.user , admin: false } %>
+  <% end %>
+</div>
+<hr>
+<h1>Dates Options</h1>
+<table class="table table-hover">
+  <thead>
+  <th>N</th>
+  <th>Date</th>
+  <th><button type="button" class="btn btn-outline-secondary">
+    <%= link_to "Vote", controller: "date_options", action: "show", event_id: @event %>
+  </button>
+  </th>
+  </thead>
+    <tbody>
+    <% @date_option.each_with_index do |date_option, i| %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= date_option.date %></td>
+      </tr>
+      <%end %>
+    </tbody>
+</table>
+<hr>
+<!--Comentarios-->
+<hr>
+<!--Multimedia-->
+<hr>
+<hr>
+
 <div class="btn-group">
   <% begin %>
       <% if Guest.where(event_id: @event , owner: true)[0].user==@current_user %>

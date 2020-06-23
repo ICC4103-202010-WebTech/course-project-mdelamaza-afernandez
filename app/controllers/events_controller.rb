@@ -11,6 +11,9 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @guest = Guest.includes(:user).where(event_id: params[:id])
+    @date_option = DateOption.where(event_id: params[:id])
+    @comment = Comment.where(event_id: params[:id])
   end
   # GET /events/new
   def new

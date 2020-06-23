@@ -1,8 +1,8 @@
 ###user
-user1 = User.create(email: "cavd@miuandes.cl", user_name:"cavd", password:"123",location:"casa 1",description:"solo hablo español",Admin: false)
-user2 = User.create(email: "aff@miuandes.cl", user_name:"aff", password:"123",location:"casa 2",description:"hello",Admin: false)
-user3 = User.create(email: "medlm@miuandes.cl", user_name:"mdlm", password:"123",location:"casa 3",description:"hi",Admin: true)
-user4 = User.create(email: "gira@miuandes.cl", user_name:"gira", password:"123",location:"casa 4",description:"F",Admin: false)
+user1 = User.create(email: "cavd@miuandes.cl", user_name:"cavd", password:"hola123",location:"casa 1",description:"solo hablo español",Admin: false)
+user2 = User.create(email: "aff@miuandes.cl", user_name:"aff", password:"hola123",location:"casa 2",description:"hello",Admin: false)
+user3 = User.create(email: "medlm@miuandes.cl", user_name:"mdlm", password:"hola123",location:"casa 3",description:"hi",Admin: true)
+user4 = User.create(email: "gira@miuandes.cl", user_name:"gira", password:"hola123",location:"casa 4",description:"F",Admin: false)
 user1.save!
 user2.save!
 user3.save!

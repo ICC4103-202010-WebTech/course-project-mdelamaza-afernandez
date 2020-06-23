@@ -10,9 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    #@user = current_user
-    #@users = User.find(params[:id])
-    # @user = User.where(id: params[:id])
+    @guests = Guest.includes(:event).where(user_id: params[:id])
+    @memberships = Membership.includes(:organization).where(user_id: params[:id])
   end
 
   # GET /users/new
