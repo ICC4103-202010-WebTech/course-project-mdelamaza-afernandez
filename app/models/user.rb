@@ -11,7 +11,17 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
     end
   end
-
+  #Mailbox
+  acts_as_messageable
+  def name
+    "User #{user_name}"
+  end
+  def mailboxer_name
+    self.name
+  end
+  def mailboxer_email(object)
+    self.email
+  end
   has_many :guests, dependent: :destroy
   has_many :events, through: :guests
 
@@ -29,7 +39,7 @@ class User < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :organizations, through: :memberships
 
-  has_many :mail_boxes, dependent: :destroy
+  #has_many :mail_boxes, dependent: :destroy
 
   # has_one :multimedium
 

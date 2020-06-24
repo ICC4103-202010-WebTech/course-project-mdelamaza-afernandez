@@ -16,7 +16,7 @@ class PagesController < ApplicationController
       @parameter = params[:search].downcase
       @matchUser =  User.all.where("lower(user_name) LIKE?", "%#{@parameter}%")
 
-      @matchEvent = Event.where("lower(name) LIKE ?", "%#{@parameter}%" )
+      @matchEvent = Event.where("lower(name) LIKE ?", "%#{@parameter}%" ).or(Event.where("lower(description) LIKE ?", "%#{@parameter}%" ))
       @matchOrganization = Organization.where("lower(name) LIKE ?","%#{@parameter}%")
       @matchId = User.all.where("lower(user_name) LIKE?", "%#{@parameter}%")
       #1,2,4

@@ -203,19 +203,19 @@ notification6.save!
 # vote6.save!
 #mail box
 # 1
-mail_box1 = MailBox.create(inbox: "msg 1")
-mail_box2 = MailBox.create(inbox: "msg 2")
-mail_box1.user_id=user1.id
-mail_box2.user_id=user2.id
-mail_box1.save!
-mail_box2.save!
-#2
-mail_box3 = MailBox.create(inbox: "msg 3")
-mail_box4 = MailBox.create(inbox: "msg 4")
-mail_box3.user_id=user3.id
-mail_box4.user_id=user4.id
-mail_box3.save!
-mail_box4.save!
+# mail_box1 = MailBox.create(inbox: "msg 1")
+# mail_box2 = MailBox.create(inbox: "msg 2")
+# mail_box1.user_id=user1.id
+# mail_box2.user_id=user2.id
+# mail_box1.save!
+# mail_box2.save!
+# #2
+# mail_box3 = MailBox.create(inbox: "msg 3")
+# mail_box4 = MailBox.create(inbox: "msg 4")
+# mail_box3.user_id=user3.id
+# mail_box4.user_id=user4.id
+# mail_box3.save!
+# mail_box4.save!
 #Reports
 report1 = Report.create(description: "Evento publico, Alvaro se entero")
 report1.event_id=event1.id
