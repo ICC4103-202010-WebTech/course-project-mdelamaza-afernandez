@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+<header>
 <div class="container">
   <style>
     a:link {
@@ -52,6 +52,12 @@
           <a class="nav-link" href="<%= user_path(current_user)%>">Profile</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="<%= events_path%>">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= organizations_path%>">Organizations</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="<%= user_mail_boxes_path(current_user)%>">Mail Box</a>
         </li>
         <li class="nav-item">
@@ -68,16 +74,9 @@
           </div>
         </div>
       <% end %>
-      <!--    <li class="nav-item ">-->
-      <!--      <form class="form-inline" action="/action_page.php">-->
-      <!--        <input class="form-control mr-sm-2" type="text" placeholder="Search">-->
-      <!--        <button class="btn btn-success" type="submit">Search</button>-->
-      <!--      </form>-->
-      <!--    </li>-->
+
 
       <ul class="nav navbar-nav navbar-right">
-        <!--    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
-        <!--    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
         <a class="nav-link" href="<%= admin_path%>">Admin</a>
       </ul>
   <%end %>
@@ -93,19 +92,22 @@
 
 </nav>
 </div>
-
-<!--  <nav>-->
-<!--    <ul id="navbar">-->
-
-<!--      <li><%#= link_to "Profile", users_path %></li>-->
-<!--      <li><button type="button" class="btn btn-dark"><%#= link_to "Mail Box", guests_path %></button></li>-->
-<!--      <li><%#= link_to "Search", events_path %></li>-->
-<!--    </ul>-->
-<!--  </nav>-->
+<!--  #ff0000-->
+</header>
 <div id="container">
-  <!--    <aside id="customer_info">-->
-  <%#= render partial: "customers/customer", object: @current_user %>
-  <!--    </aside>-->
+  <div class="row">
+    <%if user_signed_in? %>
+  <seccion class="col-sm-1.5" id="customer_info" >
+      <div>
+        <div class="card-body">
+          Welcome <%=current_user.user_name %>
+        </div>
+        <div class="card-body">
+          chao
+        </div>
+      </div>
+      </seccion>
+      <%end %>
   <main class="col-sm-10" id="main_content">
     <% if notice.present? %>
       <div class="row ml-0 mt-3" role="alert">
@@ -118,8 +120,10 @@
       </div>
     <% end %>
     <%= yield %>
+
     <hr>
   </main>
+  </div>
 </div>
 <footer>
   <h4>

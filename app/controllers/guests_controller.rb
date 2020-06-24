@@ -1,5 +1,5 @@
 class GuestsController < ApplicationController
-  before_action :set_guest, only: [:show, :edit, :update, :destroy]
+  before_action :set_guest, only: [ :edit, :update, :destroy]
 
   # GET /guests
   # GET /guests.json
@@ -67,7 +67,7 @@ class GuestsController < ApplicationController
     @guest.destroy
     respond_to do |format|
       flash[:notice] = "Guest Has Been Destroyed!"
-      format.html { redirect_to guests_url}#, notice: 'Guest was successfully destroyed.' }
+      format.html { redirect_to Event.where(id: @guest.event_id).first}#, notice: 'Guest was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

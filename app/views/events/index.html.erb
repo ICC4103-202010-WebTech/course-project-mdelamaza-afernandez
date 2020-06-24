@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
 
-<h1>Events</h1>
+<!--<h1>Events</h1>-->
 
 <!--<table>-->
 <!--  <thead>-->
@@ -55,17 +55,25 @@
 
 
 <p id="notice"><%= notice %></p>
-<button type="button" class="btn btn-outline-secondary"><%= link_to 'New Event', new_event_path%></button>
-
+<!--<button type="button" class="btn btn-outline-secondary"><%#= link_to 'New Event', new_event_path%></button>-->
+<h1><%=current_user.user_name %> Events </h1>
 <div class="row">
   <%  @events.each do |event| %>
-    <%if event.private==false %>
-       <%= render partial: 'events/event_title', locals: { event: event, admin: false } %>
-    <%else %>
-      <% event.guests.each do |guest| %>
+    <% event.guests.each do |guest| %>
       <% if guest.user==current_user %>
         <%= render partial: 'events/event_title', locals: { event: event, admin: false } %>
-          <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+<hr>
+<h1><%=current_user.user_name %> Public Organization Events </h1>
+<div class="row">
+    <%Membership.includes(:organization).where(user_id: current_user).each_with_index do |organization| %>
+<!--    organization.organization-->
+    <% Event.where(organization_id: organization.organization.id).each_with_index do |event| %>
+      <% if event.private==false %>
+        <%= render partial: 'events/event_title', locals: { event: event, admin: false } %>
       <% end %>
     <% end %>
   <% end %>

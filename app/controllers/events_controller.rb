@@ -4,8 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-     @events = Event.where(organization_id: params[:organization_id])
-     # @events = Event.all
+     # @events = Event.where(organization_id: params[:organization_id])
+     @events = Event.all
   end
 
   # GET /events/1
@@ -14,6 +14,7 @@ class EventsController < ApplicationController
     @guest = Guest.includes(:user).where(event_id: params[:id])
     @date_option = DateOption.where(event_id: params[:id])
     @comment = Comment.where(event_id: params[:id])
+    @report = Report.where(event_id: params[:id])
   end
   # GET /events/new
   def new

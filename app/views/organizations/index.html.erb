@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Organizations</h1>
+<!--<h1>Organizations</h1>-->
 
 <!--<table>-->
 <!--  <thead>-->
@@ -20,25 +20,16 @@
 <!--  </tbody>-->
 <!--</table>-->
 
-<table class="table table-hover">
-  <thead>
-  <th>N</th>
-  <th>Organization</th>
-  <th>Description</th>
-  </thead>
-  <tbody>
-  <% @organizations.each_with_index do |organization, i| %>
-    <tr>
-      <td><%= i+1 %></td>
-      <td><%= link_to organization.name, organization %></td>
-      <td><%= organization.description %></td>
-    </tr>
-<!--    <td><%#= link_to 'Edit', edit_organization_path(organization) %></td>-->
-<!--    <td><%#= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-  <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Organization', new_organization_path %>
+  <h1><%=current_user.user_name %> Organizations </h1>
+  <div class="row">
+<%Membership.includes(:organization).where(user_id: current_user).each_with_index do |organization2| %>
+  <%= render partial: 'organizations/organization_title', locals: { organization: organization2.organization , admin: false } %>
+<% end %>
+  </div>
+    <hr>
+    <h1>All Organizations </h1>
+    <div class="row">
+      <% @organizations.each_with_index do |organization| %>
+        <%= render partial: 'organizations/organization_title', locals: { organization: organization , admin: false } %>
+<% end %>
+    </div>

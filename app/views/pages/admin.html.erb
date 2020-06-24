@@ -1,24 +1,173 @@
 <p id="notice"><%= notice %></p>
 <h3>Users</h3>
-<div class="row">
-<% User.all.each do |user| %>
-  <%= render partial: 'users/user_title', locals: { user: user, admin: true} %>
+<!--<div class="row">-->
+<%# User.all.each do |user| %>
+  <%#= render partial: 'users/user_title', locals: { user: user, admin: true} %>
   <%#= link_to user.user_name, user_path(user.id)%>
-<% end %>
-</div>
+<%# end %>
+<!--</div>-->
+<table class="table table-hover">
+  <thead>
+  <th>User</th>
+  <th>Description</th>
+  <th>Edit</th>
+  <th>delete</th>
+  <th>
+    <button type="button" class="btn btn-outline-secondary">
+      <%= link_to "Add User", new_user_path %>
+    </button>
+  </th>
+  </thead>
+  <tbody>
+  <% User.all.each do |user| %>
+    <tr>
+      <td><%= link_to user.user_name ,controller: "users", action: "show", id: user.id %></td>
+      <td><%= user.description %></td>
+      <td>
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "Edit", edit_user_path(user) %>
+        </button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to 'Delete', { controller: "users", action: "destroy",user: user, id: user.id }, method: :delete%>
+        </button>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <hr>
+<!-----------------------------------------------Event--------------------------------------------------->
 <h3>Events</h3>
-<div class="row">
-<% Event.all.each do |event| %>
-  <%= render partial: 'events/event_title', locals: { event: event, admin: true } %>
+<!--<div class="row">-->
+<%# Event.all.each do |event| %>
+  <%#= render partial: 'events/event_title', locals: { event: event, admin: true } %>
   <%#= link_to event.name, event_path(event.id)%>
-<% end %>
-</div>
+<%# end %>
+<!--</div>-->
+<table class="table table-hover">
+  <thead>
+  <th>Event</th>
+  <th>Owner</th>
+  <th>Description</th>
+  <th>Edit</th>
+  <th>delete</th>
+  <th>
+    <button type="button" class="btn btn-outline-secondary">
+      <%= link_to "Add Event", new_event_path %>
+    </button>
+  </th>
+  </thead>
+  <tbody>
+  <% Event.all.each do |event| %>
+    <tr>
+      <td><%= link_to event.name ,controller: "events", action: "show", id: event.id %></td>
+      <% Guest.includes(:user).where(event_id: event.id).each_with_index do |h| %>
+        <%if h.owner %>
+          <td><%= link_to h.user.user_name, controller: "users", action: "show", id: h.user.id%></td>
+        <% end %>
+      <% end %>
+      <td><%= event.description %></td>
+      <td>
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "Edit", edit_event_path(event) %>
+        </button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to 'Delete', { controller: "events", action: "destroy",event: event, id: event.id }, method: :delete%>
+        </button>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 <hr>
+<!-----------------------------------------------Organization--------------------------------------------------->
 <h3>Organizations</h3>
+<!--<div class="row">-->
+  <%# Organization.all.each do |organization| %>
+    <%#= render partial: 'organizations/organization_title', locals: { organization: organization , admin: true} %>
+    <%#= link_to organization.name, organization_path(organization.id)%>
+  <%# end %>
+<!--</div>-->
+<table class="table table-hover">
+  <thead>
+  <th>Organization</th>
+  <th>Owner</th>
+  <th>Description</th>
+  <th>Edit</th>
+  <th>delete</th>
+  <th>
+    <button type="button" class="btn btn-outline-secondary">
+    <%= link_to "Add Organization", new_organization_path %>
+  </button>
+  </th>
+  </thead>
+  <tbody>
+  <% Organization.all.each do |organization| %>
+    <tr>
+    <td><%= link_to organization.name ,controller: "organizations", action: "show", id: organization.id %></td>
+    <% Membership.includes(:user).where(organization_id: organization.id).each_with_index do |h| %>
+      <%if h.owner %>
+        <td><%= link_to h.user.user_name, controller: "users", action: "show", id: h.user.id%></td>
+        <% end %>
+      <% end %>
+    <td><%= organization.description %></td>
+    <td>
+      <button type="button" class="btn btn-outline-secondary">
+        <%= link_to "Edit", edit_organization_path(organization) %>
+      </button>
+    </td>
+    <td>
+      <button type="button" class="btn btn-outline-secondary">
+        <%= link_to 'Delete', { controller: "organizations", action: "destroy",organization: organization, id: organization.id }, method: :delete%>
+      </button>
+    </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<hr>
+<!-----------------------------------------------Comment--------------------------------------------------->
+<h3>Comment</h3>
 <div class="row">
-<% Organization.all.each do |organization| %>
-  <%= render partial: 'organizations/organization_title', locals: { organization: organization , admin: true} %>
-  <%#= link_to organization.name, organization_path(organization.id)%>
-<% end %>
+  <table class="table table-hover">
+    <thead>
+    <th>Event</th>
+    <th>User name</th>
+    <th>Comment</th>
+    <th>Edit</th>
+    <th>delete</th>
+    <th>Add comment to Event</th>
+    </thead>
+    <tbody>
+  <% Comment.all.each do |comment| %>
+      <tr>
+        <td><%= link_to comment.event.name,controller: "events", action: "show", id: comment.event %></td>
+        <td><%= link_to comment.user.user_name, controller: "users", action: "show", id: comment.user %></td>
+        <td><%= comment.msg %></td>
+          <td>
+            <button type="button" class="btn btn-outline-secondary">
+              <%= link_to "Edit", edit_comment_path(comment) %>
+            </button>
+          </td>
+        <td>
+          <button type="button" class="btn btn-outline-secondary">
+            <%= link_to 'Delete', { controller: "comments", action: "destroy",comment: comment, id: comment.id }, method: :delete%>
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "Add Comment", new_event_comment_path(comment.event.id) %>
+        </button>
+        </td>
+      </tr>
+  <% end %>
+    </tbody>
+
+  </table>
 </div>
+

@@ -7,6 +7,7 @@
   <th>User Name</th>
   <th>Description </th>
   <th>Event Name</th>
+<!--  <th><%#= link_to 'New Report', new_event_report_path(a) %></th>-->
 
   </thead>
   <tbody>
@@ -14,7 +15,7 @@
     <tr>
       <td><%= i+1 %></td>
       <td><%= report.user_id %></td>
-      <<td><%= link_to report.user.user_name, controller: "users", action: "show", id: report.user %></td>
+      <td><%= link_to report.user.user_name, controller: "users", action: "show", id: report.user %></td>
       <td><%= report.description %></td>
       <td><%= link_to report.event.name,controller: "events", action: "show", id: report.event %></td>
     </tr>

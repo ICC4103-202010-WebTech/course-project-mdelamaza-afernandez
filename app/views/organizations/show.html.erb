@@ -25,13 +25,18 @@
   </tbody>
 </table>
 <hr>
-<h1>Members</h1>
+<!----------------------------------Members----------------------------------------------->
+<h1>Members
+<button type="button" class="btn btn-outline-secondary hola"><%= link_to "Edit", controller: "memberships", action: "show", organization_id: @organization.id %>
+</h1>
 <div class="row">
   <% @membership.each do |membership| %>
     <%= render partial: 'users/user_title', locals: { user: membership.user, admin: false } %>
   <% end %>
 </div>
 <hr>
+
+<!----------------------------------Events----------------------------------------------->
 <h1>Public Events</h1>
 <div class="row">
   <%  @events.each do |event| %>

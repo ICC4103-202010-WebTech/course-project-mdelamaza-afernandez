@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :events
   resources :date_options
+  resources :reports
   #
   resources :guests
   resources :memberships
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
       resources :reports, shallow: true #reporte del evento
 
       resources :comments, shallow: true do
-        resources :reports, shallow: true #reporte del comentario del evento
+        # resources :reports, shallow: true #reporte del comentario del evento
       end
     end
     resources :notifications, shallow: true

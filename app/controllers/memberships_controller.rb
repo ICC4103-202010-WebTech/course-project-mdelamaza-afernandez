@@ -1,5 +1,5 @@
 class MembershipsController < ApplicationController
-  before_action :set_membership, only: [:show, :edit, :update, :destroy]
+  before_action :set_membership, only: [ :edit, :update, :destroy]
 
   # GET /memberships
   # GET /memberships.json
@@ -47,7 +47,7 @@ class MembershipsController < ApplicationController
     respond_to do |format|
       if @membership.update(membership_params)
         flash[:notice] = "Membership was successfully updated."
-        format.html { redirect_to @membership}#, notice: 'Membership was successfully updated.' }
+        format.html { redirect_to Organization.where(id: @membership.organization_id).first}#, notice: 'Membership was successfully updated.' }
         format.json { render :show, status: :ok, location: @membership }
       else
         flash[:alert] = "Uups! An error ocurred. Try again later"
@@ -63,7 +63,7 @@ class MembershipsController < ApplicationController
     @membership.destroy
     respond_to do |format|
       flash[:notice] = "Membership was successfully destroyed."
-      format.html { redirect_to memberships_url}#, notice: 'Membership was successfully destroyed.' }
+      format.html { redirect_to Organization.where(id: @membership.organization_id).first}#, notice: 'Membership was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

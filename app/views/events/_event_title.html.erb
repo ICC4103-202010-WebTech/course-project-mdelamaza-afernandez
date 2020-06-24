@@ -16,14 +16,18 @@
         <%= event.location %>
       </p>
       <p class="card-text">
+        <%= "private:" %>
+        <%= event.private %>
+      </p>
+      <p class="card-text">
         <%= "Description:" %>
         <%= event.description %></p>
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group">
           <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "View", event %></button>
-          <% if Guest.where(event_id: event , owner: true)[0].user== current_user or admin  %>
+          <%# if Guest.where(event_id: event , owner: true)[0].user== current_user or admin  %>
           <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
-            <%end %>
+            <%#end %>
           <% if admin  %>
 <!--          <button type="button" class="btn btn-sm btn-outline-secondary">-->
             <%#= link_to 'Delete', { controller: "events", action: "destroy",event: event }, method: :delete %>

@@ -128,11 +128,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_231448) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "event_id"
     t.integer "user_id"
-    t.integer "comment_id"
-    t.integer "organization_id"
-    t.index ["comment_id"], name: "index_reports_on_comment_id"
     t.index ["event_id"], name: "index_reports_on_event_id"
-    t.index ["organization_id"], name: "index_reports_on_organization_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
@@ -194,8 +190,6 @@ ActiveRecord::Schema.define(version: 2020_06_20_231448) do
   add_foreign_key "multimedia", "users"
   add_foreign_key "notifications", "events"
   add_foreign_key "notifications", "users"
-  add_foreign_key "reports", "comments"
   add_foreign_key "reports", "events"
-  add_foreign_key "reports", "organizations"
   add_foreign_key "reports", "users"
 end

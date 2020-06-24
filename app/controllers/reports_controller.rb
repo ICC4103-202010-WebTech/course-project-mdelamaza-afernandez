@@ -35,9 +35,9 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
 
     respond_to do |format|
-      if @report.save
+      if @report.save!
         flash[:notice] = "Report was successfully created."
-        format.html { redirect_to @report}#, notice: 'Report was successfully created.' }
+        format.html { redirect_to Event.where(id: @report.event_id).first}#, notice: 'Report was successfully created.' }
         format.json { render :show, status: :created, location: @report }
       else
         flash[:alert] = "Uups! An error ocurred. Try again later"
@@ -53,7 +53,7 @@ class ReportsController < ApplicationController
     respond_to do |format|
       if @report.update(report_params)
         flash[:notice] = "Report was successfully created."
-        format.html { redirect_to @report}#, notice: 'Report was successfully updated.' }
+        format.html { redirect_to Event.where(id: @report.event_id).first}#, notice: 'Report was successfully updated.' }
         format.json { render :show, status: :ok, location: @report }
       else
         flash[:alert] = "Uups! An error ocurred. Try again later"
@@ -69,7 +69,7 @@ class ReportsController < ApplicationController
     @report.destroy
     respond_to do |format|
       flash[:notice] = "Report was successfully destroyed."
-      format.html { redirect_to reports_url}#, notice: 'Report was successfully destroyed.' }
+      format.html { redirect_to Event.where(id: @report.event_id).first}#, notice: 'Report was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -82,6 +82,7 @@ class ReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def report_params
-      params.fetch(:report, {})
+      params.fetch(:report, {}).permit(:user_id,:event_id,:description)
     end
+
 end

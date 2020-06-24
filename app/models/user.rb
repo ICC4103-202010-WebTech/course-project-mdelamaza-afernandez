@@ -12,7 +12,7 @@ class User < ApplicationRecord
     end
   end
 
-  has_many :guests
+  has_many :guests, dependent: :destroy
   has_many :events, through: :guests
 
   has_many :notifications, dependent: :destroy
@@ -20,18 +20,18 @@ class User < ApplicationRecord
 
   has_many :reports, dependent: :destroy
   has_many :events, through: :reports
-  has_many :comments, through: :reports
-  has_many :organizations, through: :reports
+  # has_many :comments, through: :reports
+  # has_many :organizations, through: :reports
 
   has_many :comments, dependent: :destroy
   has_many :events, through: :comments
 
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :organizations, through: :memberships
 
-  has_many :mail_boxes
+  has_many :mail_boxes, dependent: :destroy
 
-  has_one :multimedium
+  # has_one :multimedium
 
 
 

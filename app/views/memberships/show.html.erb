@@ -1,10 +1,38 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
 
-<button type="button" class="btn btn-outline-secondary">
-  <%= link_to 'New Member', new_organization_membership_path(@membership[0].organization_id) %>
-</button>
-<div class="row">
-  <% @membership.each do |membership| %>
-    <%= render partial: 'users/user_title', locals: { user: membership.user, admin: false } %>
+<!--<button type="button" class="btn btn-outline-secondary">-->
+  <%#= link_to 'New Member', new_organization_membership_path(@membership[0].organization_id) %>
+<!--</button>-->
+<!--<div class="row">-->
+  <%# @membership.each do |membership| %>
+    <%#= render partial: 'users/user_title', locals: { user: membership.user, admin: false } %>
+  <%# end %>
+<!--</div>-->
+
+<table class="table table-hover">
+  <thead>
+  <th>N</th>
+  <th>User Name</th>
+  <th>organization Name</th>
+  <th colspan="2"><button type="button" class="btn btn-outline-secondary">
+    <%= link_to 'Invite', new_organization_membership_path(@membership[0].organization_id) %>
+  </button></th>
+
+  </thead>
+  <tbody>
+  <% @membership.each_with_index do |membership, i| %>
+    <tr>
+      <% if membership.user!=current_user %>
+        <td><%= i+1 %></td>
+        <td><%= link_to membership.user.user_name, controller: "users", action: "show", id: membership.user %></td>
+        <td><%= link_to membership.organization.name,controller: "events", action: "show", id: membership.organization %></td>
+        <td>
+          <button type="button" class="btn btn-outline-secondary">
+            <%= link_to 'Delete', { controller: "memberships", action: "destroy",membership: membership, id: membership.id }, method: :delete%>
+          </button>
+        </td>
+      <% end %>
+    </tr>
   <% end %>
-</div>
+  </tbody>
+</table>
