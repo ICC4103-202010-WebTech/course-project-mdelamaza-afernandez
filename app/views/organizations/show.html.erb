@@ -26,9 +26,13 @@
 </table>
 <hr>
 <!----------------------------------Members----------------------------------------------->
+<% if can? :manage, @organization %>
 <h1>Members
 <button type="button" class="btn btn-outline-secondary hola"><%= link_to "Edit", controller: "memberships", action: "show", organization_id: @organization.id %>
 </h1>
+  <%else %>
+  <h1>Members</h1>
+  <%end %>
 <div class="row">
   <% @membership.each do |membership| %>
     <%= render partial: 'users/user_title', locals: { user: membership.user, admin: false } %>
@@ -61,7 +65,7 @@
 <hr>
 
 <div class="btn-group">
-  <% if Membership.where(organization_id: @organization , owner: true)[0].user==@current_user %>
+  <% if can? :manage, @organization %>
     <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_organization_path(@organization) %></button>
     <button type="button" class="btn btn-outline-secondary">
       <%= link_to 'Delete', { controller: "organizations", action: "destroy",event: @organization }, method: :delete %></button>

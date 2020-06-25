@@ -26,9 +26,11 @@
         <div class="btn-group">
           <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "View", event %></button>
           <%# if Guest.where(event_id: event , owner: true)[0].user== current_user or admin  %>
+          <% if can? :manage, event %>
           <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
+            </button>
             <%#end %>
-          <% if admin  %>
+          <%# if admin  %>
 <!--          <button type="button" class="btn btn-sm btn-outline-secondary">-->
             <%#= link_to 'Delete', { controller: "events", action: "destroy",event: event }, method: :delete %>
 <!--          </button>-->

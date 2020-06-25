@@ -75,10 +75,11 @@
         </div>
       <% end %>
 
-
+      <% if current_user.Admin %>
       <ul class="nav navbar-nav navbar-right">
         <a class="nav-link" href="<%= admin_path%>">Admin</a>
       </ul>
+        <%end %>
   <%end %>
     <%if user_signed_in? %>
       <%= link_to destroy_user_session_path, method: :delete do %>
@@ -92,7 +93,6 @@
 
 </nav>
 </div>
-<!--  #ff0000-->
 </header>
 <div id="container">
   <div class="row">

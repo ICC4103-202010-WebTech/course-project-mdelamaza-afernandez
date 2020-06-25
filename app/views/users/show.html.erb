@@ -55,7 +55,7 @@
 </div>
 <hr>
 <div class="btn-group">
-  <% if @user.id==1%>
+  <% if can? :manage, @user %>
     <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_user_path(@user) %></button>
   <%end %>
   <button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
