@@ -1,9 +1,10 @@
 <h1>Conversations</h1>
+<div>
+  <%= link_to 'New Conversation', new_conversation_path, class:"btn btn-success" %>
+</div>
+<p>Select existing conversation</p>
 <%@conversations.each do |conversation|%>
   <div>
-    <%=link_to conversation.subject, conversation_path(conversation) %>
+    <%=link_to conversation.subject, conversation_path(conversation),class: "btn" %>
   </div>
 <% end %>
-<div>
-  <%= link_to 'New Conversation', new_conversation_path %>
-</div>
