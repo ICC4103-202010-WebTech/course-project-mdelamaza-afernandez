@@ -12,8 +12,6 @@
   <th>Email</th>
   <th>Location</th>
   <th>Description</th>
-  <th>Events</th>
-  <th>Organizations</th>
   </thead>
   <tbody>
   <tr>
@@ -21,8 +19,6 @@
     <td><%= @user.email %></td>
     <td><%= @user.location %></td>
     <td><%= @user.description %></td>
-    <td><button type="button" class="btn btn-outline-secondary"><%= link_to 'New Event', new_event_path%></button></td>
-    <td><button type="button" class="btn btn-outline-secondary"><%= link_to 'New Organization', new_organization_path %></button></td>
 <!--    <td><%#= link_to "Events", controller: "guests", action: "index", user_id: @user %></td>-->
 <!--    <td><%#= link_to "Organizations", controller: "memberships", action: "index", user_id: @user %></td>-->
   </tr>
@@ -57,6 +53,8 @@
 <div class="btn-group">
   <% if can? :manage, @user %>
     <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_user_path(@user) %></button>
+    <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Event', new_event_path%></button>
+    <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Organization', new_organization_path %></button>
   <%end %>
   <button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
 </div>

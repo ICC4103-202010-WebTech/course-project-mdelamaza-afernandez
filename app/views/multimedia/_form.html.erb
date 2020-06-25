@@ -1,17 +1,40 @@
+<%#= form_with(model: multimedium, local: true) do |form| %>
+  <%# if multimedium.errors.any? %>
+<!--    <div id="error_explanation">-->
+<!--      <h2><%#= pluralize(multimedium.errors.count, "error") %> prohibited this multimedium from being saved:</h2>-->
+
+<!--      <ul>-->
+        <%# multimedium.errors.full_messages.each do |message| %>
+<!--          <li><%#= message %></li>-->
+        <%# end %>
+<!--      </ul>-->
+<!--    </div>-->
+  <%# end %>
+
+<!--  <div class="actions">-->
+    <%#= form.submit %>
+<!--  </div>-->
+<%# end %>
 <%= form_with(model: multimedium, local: true) do |form| %>
-  <% if multimedium.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(multimedium.errors.count, "error") %> prohibited this multimedium from being saved:</h2>
-
-      <ul>
-        <% multimedium.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<div class="form-group">
+  <%= form.label "image" %>
+  <%= form.file_field :flyer %>
+</div>
+<div class="form-group">
+  <%= form.label "video" %>
+  <%= form.file_field :video %>
+</div>
+<div class="form-group">
+  <%= form.label "file" %>
+  <%= form.file_field :file %>
+</div>
+<div class="form-group">
+  <%= form.label :event_id %>
+  <%= form.hidden_field :event_id,value: event, class: "form-control"%>
+</div>
+<div class="form-group mt-2">
+  <%= form.submit "Save Changes", class: ["btn", "btn-primary"] %>
+  <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+</div>
+<%end %>
+</div>

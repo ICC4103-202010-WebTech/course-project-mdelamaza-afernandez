@@ -142,12 +142,8 @@ ActiveRecord::Schema.define(version: 2020_06_24_221525) do
   create_table "multimedia", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "organization_id"
-    t.integer "user_id"
     t.integer "event_id"
     t.index ["event_id"], name: "index_multimedia_on_event_id"
-    t.index ["organization_id"], name: "index_multimedia_on_organization_id"
-    t.index ["user_id"], name: "index_multimedia_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -234,8 +230,6 @@ ActiveRecord::Schema.define(version: 2020_06_24_221525) do
   add_foreign_key "memberships", "organizations"
   add_foreign_key "memberships", "users"
   add_foreign_key "multimedia", "events"
-  add_foreign_key "multimedia", "organizations"
-  add_foreign_key "multimedia", "users"
   add_foreign_key "notifications", "events"
   add_foreign_key "notifications", "users"
   add_foreign_key "reports", "events"

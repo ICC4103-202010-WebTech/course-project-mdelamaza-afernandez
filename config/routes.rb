@@ -27,20 +27,21 @@ Rails.application.routes.draw do
   resources :date_options
   resources :reports
   #
+  resources :multimedia
   resources :guests
   resources :memberships
   resources :mail_boxes
   #
   resources :organizations
   resources :users do
-    resources :multimedium
+    # resources :multimedium
     resources :mail_boxes
 
     resources :events, shallow: true do
       resources :guests, shallow: true
       resources :date_options, shallow: true
       resources :reports, shallow: true #reporte del evento
-
+      resources :multimedia, shallow: true
       resources :comments, shallow: true do
         # resources :reports, shallow: true #reporte del comentario del evento
       end

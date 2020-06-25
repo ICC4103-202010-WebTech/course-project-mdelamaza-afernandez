@@ -27,7 +27,7 @@ class MultimediaController < ApplicationController
     @multimedium = Multimedium.new(multimedium_params)
 
     respond_to do |format|
-      if @multimedium.save
+      if @multimedium.save!
         flash[:notice] = "Multimedium was successfully created."
         format.html { redirect_to @multimedium}#, notice: 'Multimedium was successfully created.' }
         format.json { render :show, status: :created, location: @multimedium }
@@ -74,6 +74,6 @@ class MultimediaController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def multimedium_params
-      params.fetch(:multimedium, {})
+      params.fetch(:multimedium, {}).permit(:id,:flyer,:video,:file,:event_id)
     end
 end
