@@ -14,6 +14,7 @@ class MultimediaController < ApplicationController
 
   # GET /multimedia/new
   def new
+    @event = params[:event_id]
     @multimedium = Multimedium.new
   end
 
@@ -25,11 +26,10 @@ class MultimediaController < ApplicationController
   # POST /multimedia.json
   def create
     @multimedium = Multimedium.new(multimedium_params)
-
     respond_to do |format|
       if @multimedium.save!
         flash[:notice] = "Multimedium was successfully created."
-        format.html { redirect_to @multimedium}#, notice: 'Multimedium was successfully created.' }
+        format.html { redirect_to Event.where(id: @multimedium.event_id).first}#, notice: 'Multimedium was successfully created.' }
         format.json { render :show, status: :created, location: @multimedium }
       else
         flash[:alert] = "Uups! An error ocurred. Try again later"
@@ -45,7 +45,7 @@ class MultimediaController < ApplicationController
     respond_to do |format|
       if @multimedium.update(multimedium_params)
         flash[:notice] = "Multimedium was successfully updated."
-        format.html { redirect_to @multimedium}#, notice: 'Multimedium was successfully updated.' }
+        format.html { redirect_to Event.where(id: @multimedium.event_id).first}#, notice: 'Multimedium was successfully updated.' }
         format.json { render :show, status: :ok, location: @multimedium }
       else
         flash[:alert] = "Uups! An error ocurred. Try again later"
@@ -61,7 +61,7 @@ class MultimediaController < ApplicationController
     @multimedium.destroy
     respond_to do |format|
       flash[:notice] = "Multimedium was successfully destroyed."
-      format.html { redirect_to multimedia_url}#, notice: 'Multimedium was successfully destroyed.' }
+      format.html { redirect_to Event.where(id: @multimedium.event_id).first}#, notice: 'Multimedium was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

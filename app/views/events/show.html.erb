@@ -107,7 +107,40 @@
 <hr>
 <!-------------------------------------Multimedia------------------------------------->
 <h1>Multimedia</h1>
-<button type="button" class="btn btn-outline-secondary"><%= link_to 'New Multimedium', new_event_multimedium_path(@event.id) %></button>
+<button type="button" class="btn btn-outline-secondary"><%= link_to 'New Multimedium', new_event_multimedium_path(1) %></button>
+<h1>Fotos</h1>
+<div class="row">
+  <% @multimedium.each_with_index do |multimedia| %>
+    <div>
+      <%if multimedia.flyer.attached?%>
+        <%= image_tag(multimedia.flyer, width: "400px") %>
+      <%end %>
+    </div>
+  <%end %>
+</div>
+<h1>Videos</h1>
+<div class="row">
+  <% @multimedium.each_with_index do |multimedia| %>
+    <div>
+      <%if multimedia.video.attached?%>
+        <video width="320" height="240" controls>
+          <source src="movie.mp4" type="video/mp4">
+          <source src="movie.ogg" type="video/ogg"> <%= (multimedia.video) %></video>
+      <%end %>
+    </div>
+  <%end %>
+</div>
+<h1>PDF</h1>
+<div class="row">
+  <% @multimedium.each_with_index do |multimedia| %>
+    <div>
+      <%if multimedia.file.attached?%>
+          <object width="100%" height="500px" data="snippet.html"><%= (multimedia.file) %></object>
+      <%end %>
+    </div>
+  <%end %>
+</div>
+<object width="100%" height="500px" data="snippet.html"></object>
 <hr>
 <!-------------------------------------Report------------------------------------->
 <h1>Reports </h1>

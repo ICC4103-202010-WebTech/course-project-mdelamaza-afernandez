@@ -16,6 +16,7 @@ class EventsController < ApplicationController
     @date_option = DateOption.where(event_id: params[:id])
     @comment = Comment.where(event_id: params[:id])
     @report = Report.where(event_id: params[:id])
+    @multimedium = Multimedium.where(event_id: params[:id])
   end
   # GET /events/new
   def new

@@ -7,15 +7,15 @@
     </div>
     <div class="form-group">
       <%= form.label :name %>
-      <%= form.text_field :name, class: "form-control" %>
+      <%= form.text_field :name, class: "form-control" , required: true%>
     </div>
     <div class="form-group">
       <%= form.label :location %>
-      <%= form.text_field :location, class: "form-control" %>
+      <%= form.text_field :location, class: "form-control" , required: true%>
     </div>
     <div class="form-group">
       <%= form.label :description %>
-      <%= form.text_area :description, class: "form-control" %>
+      <%= form.text_area :description, class: "form-control" , required: true%>
     </div>
     <div class="form-group">
       <%= form.label :private %>
