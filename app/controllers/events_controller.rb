@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   def index
      # @events = Event.where(organization_id: params[:organization_id])
      @events = Event.all
+     @g= Guest.includes(:event).where(user_id: current_user.id)
   end
 
   # GET /events/1

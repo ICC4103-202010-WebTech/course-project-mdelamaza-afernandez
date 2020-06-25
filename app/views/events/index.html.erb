@@ -56,6 +56,15 @@
 
 <p id="notice"><%= notice %></p>
 <!--<button type="button" class="btn btn-outline-secondary"><%#= link_to 'New Event', new_event_path%></button>-->
+<h1><%=current_user.user_name %> Create Events</h1>
+<div class="row">
+  <% Guest.includes(:event).where(user_id: current_user.id).each do |guest| %>
+    <% if guest.owner %>
+      <%= render partial: 'events/event_title', locals: { event: guest.event , admin: false} %>
+    <% end %>
+  <% end %>
+</div>
+<hr>
 <h1><%=current_user.user_name %> Events </h1>
 <div class="row">
   <%  @events.each do |event| %>
