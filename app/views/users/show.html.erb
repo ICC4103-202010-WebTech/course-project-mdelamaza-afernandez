@@ -53,6 +53,9 @@
 <div class="btn-group">
   <% if can? :manage, @user %>
     <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_user_path(@user) %></button>
+    <button type="button" class="btn btn-outline-secondary">
+      <%= link_to 'Delete', { controller: "users", action: "destroy",user: @user, id: @user.id }, method: :delete%>
+    </button>
     <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Event', new_event_path%></button>
     <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Organization', new_organization_path %></button>
   <%end %>

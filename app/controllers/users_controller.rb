@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       flash[:notice] = "User was successfully created."
-      format.html { redirect_to users_url}#, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to root_path}#, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
