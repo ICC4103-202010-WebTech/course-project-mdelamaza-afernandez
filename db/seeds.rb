@@ -15,9 +15,9 @@ organization1.save!
 organization2.save!
 organization3.save!
 ###event
-event1= Event.create(name:"Alvaro Birthday",location:"casa 3",description:"alvaro secret birthday",private:true)
-event2= Event.create(name:"study night",location:"casa 1",description:"noche de estudio donde cami",private:false )
-event3= Event.create(name:"No Cami",location:"casa 4",description:"noche de estudio sin cami",private:false )
+event1= Event.create(name:"Alvaro Birthday",location:"casa 3",description:"alvaro secret birthday",private:true ,voted_date:DateTime.now.to_date)
+event2= Event.create(name:"study night",location:"casa 1",description:"noche de estudio donde cami",private:false ,voted_date:DateTime.now.to_date)
+event3= Event.create(name:"No Cami",location:"casa 4",description:"noche de estudio sin cami",private:false ,voted_date:DateTime.now.to_date)
 event1.organization_id = organization1.id
 event2.organization_id = organization2.id
 event3.organization_id = organization3.id

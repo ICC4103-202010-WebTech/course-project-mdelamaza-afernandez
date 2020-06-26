@@ -1,4 +1,12 @@
 <p id="notice"><%= notice %></p>
+<h1> <%=@organization.name %> Organization
+<div class="btn-group">
+  <% if can? :manage, @organization %>
+    <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_organization_path(@organization) %></button>
+    <button type="button" class="btn btn-outline-secondary">
+      <%= link_to 'Delete', { controller: "organizations", action: "destroy",event: @organization }, method: :delete %></button>
+  <% end %>
+  </div></h1>
 <div>
   <%if @organization.flyer.attached?%>
     <%=image_tag(@organization.flyer, width: "400px")%>
@@ -65,11 +73,11 @@
 <hr>
 
 <div class="btn-group">
-  <% if can? :manage, @organization %>
-    <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_organization_path(@organization) %></button>
-    <button type="button" class="btn btn-outline-secondary">
-      <%= link_to 'Delete', { controller: "organizations", action: "destroy",event: @organization }, method: :delete %></button>
-  <% end %>
-  <button type="button" class="btn btn-outline-secondary"><%= link_to "Report", controller: "reports", action: "show", organization_id: @organization %></button>
+  <%# if can? :manage, @organization %>
+<!--    <button type="button" class="btn btn-outline-secondary"><%#= link_to 'Edit', edit_organization_path(@organization) %></button>-->
+<!--    <button type="button" class="btn btn-outline-secondary">-->
+<!--      <%#= link_to 'Delete', { controller: "organizations", action: "destroy",event: @organization }, method: :delete %></button>-->
+  <%# end %>
+<!--  <button type="button" class="btn btn-outline-secondary"><%#= link_to "Report", controller: "reports", action: "show", organization_id: @organization %></button>-->
   <button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
 </div>

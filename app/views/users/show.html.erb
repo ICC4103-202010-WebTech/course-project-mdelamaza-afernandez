@@ -1,4 +1,16 @@
 <p id="notice"><%= notice %></p>
+<h1><%=@user.user_name %> Profile
+  <div class="btn-group">
+    <% if can? :manage, @user %>
+      <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_user_path(@user) %></button>
+      <button type="button" class="btn btn-outline-secondary">
+        <%= link_to 'Delete', { controller: "users", action: "destroy",user: @user, id: @user.id }, method: :delete%>
+      </button>
+      <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Event', new_event_path%></button>
+      <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Organization', new_organization_path %></button>
+    <%end %>
+  </div>
+</h1>
 <div>
   <%if @user.flyer.attached?%>
     <%= image_tag(user.flyer, width: "400px")%>
@@ -39,7 +51,9 @@
 <h1>All <%=@user.user_name %> Events</h1>
 <div class="row">
   <% @guests.each do |guest| %>
+    <% if  guest.event.private==false or (Guest.where(user_id: current_user.id).where(event_id: guest.event.id).first!=nil) or current_user.Admin %>
     <%= render partial: 'events/event_title', locals: { event: guest.event, admin: false } %>
+    <% end %>
   <% end %>
 </div>
 <hr>
@@ -51,14 +65,14 @@
 </div>
 <hr>
 <div class="btn-group">
-  <% if can? :manage, @user %>
-    <button type="button" class="btn btn-outline-secondary"><%= link_to 'Edit', edit_user_path(@user) %></button>
-    <button type="button" class="btn btn-outline-secondary">
-      <%= link_to 'Delete', { controller: "users", action: "destroy",user: @user, id: @user.id }, method: :delete%>
-    </button>
-    <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Event', new_event_path%></button>
-    <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Organization', new_organization_path %></button>
-  <%end %>
+  <%# if can? :manage, @user %>
+<!--    <button type="button" class="btn btn-outline-secondary"><%#= link_to 'Edit', edit_user_path(@user) %></button>-->
+<!--    <button type="button" class="btn btn-outline-secondary">-->
+      <%#= link_to 'Delete', { controller: "users", action: "destroy",user: @user, id: @user.id }, method: :delete%>
+<!--    </button>-->
+<!--    <button type="button" class="btn btn-outline-secondary"><%#= link_to 'New Event', new_event_path%></button>-->
+<!--    <button type="button" class="btn btn-outline-secondary"><%#= link_to 'New Organization', new_organization_path %></button>-->
+  <%#end %>
   <button type="button" class="btn btn-outline-secondary"><%= link_to 'home', root_path %></button>
 </div>
 

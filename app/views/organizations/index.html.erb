@@ -20,7 +20,7 @@
 <!--  </tbody>-->
 <!--</table>-->
 
-  <h1><%=current_user.user_name %> Organizations </h1>
+  <h1><%=current_user.user_name %> Organizations <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Organization', new_organization_path %></button></h1>
   <div class="row">
 <%Membership.includes(:organization).where(user_id: current_user).each_with_index do |organization2| %>
   <%= render partial: 'organizations/organization_title', locals: { organization: organization2.organization , admin: false } %>
