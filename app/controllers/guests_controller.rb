@@ -1,5 +1,5 @@
 class GuestsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
   before_action :set_guest, only: [ :edit, :update, :destroy]
 
   # GET /guests
@@ -65,10 +65,18 @@ class GuestsController < ApplicationController
   # DELETE /guests/1
   # DELETE /guests/1.json
   def destroy
+    if @guest.owner
+      Event.where(id: @guest.event_id).first.destroy
+    else
     @guest.destroy
+    end
     respond_to do |format|
       flash[:notice] = "Guest Has Been Destroyed!"
+      if Event.where(id: @guest.event_id).first!=nil
       format.html { redirect_to Event.where(id: @guest.event_id).first}#, notice: 'Guest was successfully destroyed.' }
+      else
+        format.html { redirect_to root_path }
+        end
       format.json { head :no_content }
     end
   end

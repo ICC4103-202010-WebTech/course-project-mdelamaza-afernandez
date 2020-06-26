@@ -61,10 +61,18 @@ class MembershipsController < ApplicationController
   # DELETE /memberships/1
   # DELETE /memberships/1.json
   def destroy
-    @membership.destroy
+    if @membership.owner
+      Organization.where(id: @membership.organization_id).first.destroy
+    else
+      @membership.destroy
+    end
     respond_to do |format|
       flash[:notice] = "Membership was successfully destroyed."
+      if Organization.where(id: @membership.organization_id).first!=nil
       format.html { redirect_to Organization.where(id: @membership.organization_id).first}#, notice: 'Membership was successfully destroyed.' }
+    else
+      format.html { redirect_to root_path }
+    end
       format.json { head :no_content }
     end
   end

@@ -87,3 +87,11 @@
     <% end %>
   <% end %>
 </div>
+<% if current_user.Admin %>
+  <h1>All Events </h1>
+  <div class="row">
+    <%Event.all.each do |event| %>
+          <%= render partial: 'events/event_title', locals: { event: event, admin: false } %>
+    <% end %>
+  </div>
+<%end %>

@@ -61,10 +61,25 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    a=false
+    @guests = Guest.includes(:event).where(user_id: @user.id).where(owner: true)
+    @memberships = Membership.includes(:organization).where(user_id: @user.id).where(owner: true)
+    if @guests.first!=nil
+      @guests.first.event.destroy
+      a=true
+    end
+    if @memberships.first!=nil
+      @memberships.first.organization.destroy
+      a=true
+    end
     @user.destroy
     respond_to do |format|
       flash[:notice] = "User was successfully created."
-      format.html { redirect_to root_path}#, notice: 'User was successfully destroyed.' }
+      if a
+        format.html { redirect_to admin_path}#, notice: 'User was successfully destroyed.' }
+      else
+        format.html { redirect_to root_path}#, notice: 'User was successfully destroyed.' }
+      end
       format.json { head :no_content }
     end
   end
