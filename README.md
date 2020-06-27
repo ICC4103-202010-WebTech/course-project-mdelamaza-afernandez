@@ -2,7 +2,17 @@
 Martín de la Maza
 
 Alvaro Fernández
+ENTREGA 4
+Si al iniciar la app aparece un error de que la base de datos se encuentra bloqueada, introducir los siguientes codigios.
+rake db:drop
+rake db:migrate
+rake db:seed
 
+Admin user is:
+medlm@miuandes.cl
+pass: hola123
+
+Review seed file if any doubts.
 
 Entrega 2
 https://www.getpostman.com/collections/0004a4a9875af1f59c1f
