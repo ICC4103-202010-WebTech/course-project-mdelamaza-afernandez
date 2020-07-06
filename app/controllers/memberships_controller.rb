@@ -1,5 +1,5 @@
 class MembershipsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
   before_action :set_membership, only: [ :edit, :update, :destroy]
 
   # GET /memberships
@@ -30,13 +30,13 @@ class MembershipsController < ApplicationController
     @membership = Membership.new(membership_params)
 
     respond_to do |format|
-      if @membership.save!
+      if @membership.save
         flash[:notice] = "Membership was successfully created."
         format.html { redirect_to Organization.where(id: @membership.organization_id).first}#, notice: 'Membership was successfully created.' }
         format.json { render :show, status: :created, location: @membership }
       else
-        flash[:alert] = "Uups! An error ocurred. Try again later"
-        format.html { render :new }
+        flash[:alert] = "The User is alredy invite"
+        format.html { redirect_to Organization.where(id: @membership.organization_id).first }
         format.json { render json: @membership.errors, status: :unprocessable_entity }
       end
     end

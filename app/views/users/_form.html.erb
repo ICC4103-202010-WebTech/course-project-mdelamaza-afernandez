@@ -25,6 +25,12 @@
       <%= form.label :description %>
       <%= form.text_area :description, class: "form-control" , required: true%>
     </div>
+    <div class="form-group">
+    <%if current_user.Admin %>
+        <%= form.label :Admin %>
+      <%= form.check_box :Admin %>
+      <%end %>
+    </div>
     <div class="form-group mt-2">
       <%= form.submit "Save Changes", class: ["btn", "btn-primary"] %>
       <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>

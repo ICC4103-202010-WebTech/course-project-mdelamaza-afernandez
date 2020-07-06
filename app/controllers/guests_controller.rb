@@ -34,13 +34,13 @@ class GuestsController < ApplicationController
     # puts ("chaooooooooooooooooooooooooo")
     # puts(params[:id])
     respond_to do |format|
-      if @guest.save!
+      if @guest.save
         flash[:notice] = "Guest Has Been Created!"
         format.html { redirect_to Event.where(id: @guest.event_id).first, notice: 'Guest was successfully created.' }
         format.json { render :show, status: :created, location: @guest }
       else
-        flash[:alert] = "Uups! An error ocurred. Try again later"
-        format.html { render :new }
+        flash[:alert] = "The User is alredy invite"
+        format.html { redirect_to Event.where(id: @guest.event_id).first }
         format.json { render json: @guest.errors, status: :unprocessable_entity }
       end
     end

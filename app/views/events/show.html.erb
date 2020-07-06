@@ -22,10 +22,10 @@
   <th>Location</th>
   <th>Description</th>
   <th>Final Date</th>
-  <th>Guest</th>
-  <th>Dates Options</th>
+<!--  <th>Guest</th>-->
+<!--  <th>Dates Options</th>-->
   <th>Organization</th>
-  <th>Comment</th>
+<!--  <th>Comment</th>-->
   </thead>
   <tbody>
 
@@ -35,10 +35,10 @@
     <td><%= @event.location %></td>
     <td><%= @event.description %></td>
     <td><%= @event.voted_date %></td>
-    <td><%= link_to "Guests", controller: "guests", action: "show", event_id: @event %></td>
-    <td><%= link_to "Dates Options", controller: "date_options", action: "show", event_id: @event %></td>
+<!--    <td><%#= link_to "Guests", controller: "guests", action: "show", event_id: @event %></td>-->
+<!--    <td><%#= link_to "Dates Options", controller: "date_options", action: "show", event_id: @event %></td>-->
     <td><%= link_to @event.organization.name , controller: "organizations", action: "show", id: @event.organization_id %></td>
-    <td><%= link_to "Comments", controller: "comments", action: "show", event_id: @event %></td>
+<!--    <td><%#= link_to "Comments", controller: "comments", action: "show", event_id: @event %></td>-->
   </tr>
 
   </tbody>
@@ -57,7 +57,16 @@
 </div>
 <hr>
 <!-------------------------------------Date options ------------------------------------->
-<h1>Dates Options</h1>
+<% if can? :manage, @event %>
+  <h1>Dates Options
+    <button type="button" class="btn btn-outline-secondary">
+      <%= link_to 'New Date Option', new_event_date_option_path(@event.id) %></button>
+  </h1>
+<%else %>
+  <h1>Dates Options</h1>
+<%end %>
+
+
 <table class="table table-hover">
   <thead>
   <th>N</th>
@@ -116,8 +125,13 @@
 </table>
 <hr>
 <!-------------------------------------Multimedia------------------------------------->
-<h1>Multimedia</h1>
-<button type="button" class="btn btn-outline-secondary"><%= link_to 'New Multimedium', new_event_multimedium_path(1) %></button>
+<% if can? :manage, @event %>
+<h1>Multimedia
+  <button type="button" class="btn btn-outline-secondary"><%= link_to 'New Multimedium', new_event_multimedium_path(@event.id) %></button>
+</h1>
+<%else %>
+  <h1>Multimedia</h1>
+<%end %>
 <h1>Image</h1>
 <div class="row">
   <% @multimedium.each_with_index do |multimedia| %>

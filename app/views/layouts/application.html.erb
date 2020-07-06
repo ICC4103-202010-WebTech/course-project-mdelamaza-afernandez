@@ -102,9 +102,20 @@
         <div class="card-body">
           Welcome <%=current_user.user_name %>
         </div>
+<!--        <div class="card-body">-->
+          <%#if  current_user.last_sign_in_at==nil%>
+<!--            hola-->
+<!--            Last Visit <%#=current_user.created_at %>-->
+          <%#else %>
+<!--          Last Visit <%#=current_user.last_sign_in_at %>-->
+        <%#end %>
+<!--            </div>-->
         <div class="card-body">
-
-          Last Visit <%=current_user.last_sign_in_at %>
+          <%if current_user.Admin %>
+            Rol: Amin
+            <%else %>
+            Rol: User
+            <%end %>
         </div>
       </div>
       </seccion>
@@ -131,6 +142,12 @@
     Contact Information
   </h4>
   <p>Contact us at: themeetingwebtech@gmail.com</p>
+  <a  href="https://www.termsofservicegenerator.net/live.php?token=8O9GlzxbURV6B49FCvvS24SNxqlyAK0t" target="_blank">
+    Terms and Conditions of Use |
+  </a>
+  <a  href='https://www.termsofusegenerator.net/live.php?token=jqqWPbz5RJ5ZF8EHUy00dPPn9HyJlAr0' target="_blank">
+    Terms of Use
+  </a>
 </footer>
 </body>
 </html>
