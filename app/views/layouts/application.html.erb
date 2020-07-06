@@ -102,20 +102,16 @@
         <div class="card-body">
           Welcome <%=current_user.user_name %>
         </div>
-<!--        <div class="card-body">-->
-          <%#if  current_user.last_sign_in_at==nil%>
-<!--            hola-->
-<!--            Last Visit <%#=current_user.created_at %>-->
-          <%#else %>
-<!--          Last Visit <%#=current_user.last_sign_in_at %>-->
-        <%#end %>
-<!--            </div>-->
         <div class="card-body">
           <%if current_user.Admin %>
             Rol: Amin
             <%else %>
             Rol: User
             <%end %>
+        </div>
+        <div class="card-body">
+          Last Visit:
+          <%=current_user.last_sign_in_at.in_time_zone("America/New_York").to_s%>
         </div>
       </div>
       </seccion>
